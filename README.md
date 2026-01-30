@@ -3,7 +3,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Shalicon Infra LLP",
+    "name": "PLK Capital",
     "url": "https://yourdomain.com",
     "logo": "https://yourdomain.com/logo.png"
   }

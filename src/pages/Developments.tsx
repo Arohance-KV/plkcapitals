@@ -1,6 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { PROPERTIES } from '../../constants';
 import { gsap } from '@/src/lib/gsap';
 
 const Developments: React.FC = () => {

@@ -22,7 +22,7 @@ export const HeroReveal = ({ onComplete }: HeroRevealProps) => {
                 muted
                 playsInline
                 onEnded={handleVideoEnd}
-                className="w-full h-full object-cover"
+                className="w-full h-full md:object-cover object-contain"
             />
         </div>
     );

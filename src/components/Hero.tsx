@@ -3,7 +3,12 @@ import { useReveal, useStagger } from '../hooks/useGsap';
 import logo from '../assets/logo.png';
 import heroVideo from '../assets/plk-hero.mp4';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+    variant?: 'default' | 'light';
+}
+
+export const Hero: React.FC<HeroProps> = ({ variant = 'default' }) => {
+    const isLight = variant === 'light';
     const containerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
 
@@ -13,38 +18,30 @@ export const Hero: React.FC = () => {
     // Reveal the whole container slightly
     useReveal(containerRef, { y: 20, duration: 1.2, delay: 0.2 });
 
-    return (
-        <section ref={containerRef} className="px-4 md:px-12 pt-32 pb-12 max-w-7xl mx-auto opacity-0">
-            <div className="bg-[#1C1F26] rounded-sm p-8 md:p-16 flex flex-col lg:flex-row gap-12 relative overflow-hidden mb-12">
+    const textColor = isLight ? 'text-[#0E293C]' : 'text-white';
+    const subTextColor = isLight ? 'text-[#0E293C]/80' : 'text-white/80';
+    const dividerColor = isLight ? 'bg-[#0E293C]/20' : 'bg-white/20';
 
-                {/* Left Content */}
-                <div ref={textRef} className="flex-1 z-10">
-                    <h1 className="text-4xl md:text-6xl font-serif text-white leading-tight mb-8">
+    return (
+        <section ref={containerRef} className="px-4 md:px-12 pt-40 pb-20 w-full opacity-0 min-h-screen flex flex-col justify-center">
+            <div className="flex flex-col items-start relative z-10 max-w-4xl w-full">
+
+                {/* Text Content */}
+                <div ref={textRef} className="flex-1">
+                    <h1 className={`text-5xl md:text-7xl ${textColor} leading-[1.1] mb-12 tracking-tight`}>
                         Helping your money <br />
-                        stay aligned with your life.
+                        stay aligned with <br />
+                        your life.
                     </h1>
-                    <p className="text-plk-grey text-lg max-w-md leading-relaxed">
-                        Thoughtful financial guidance for individuals, families, and business owners — built on clarity, independence, and long-term thinking.
+                    <p className={`${subTextColor} text-xl md:text-2xl font-light max-w-2xl leading-relaxed`}>
+                        Thoughtful financial guidance for individuals, families, and business owners built on clarity, independence, and long-term thinking.
                     </p>
                 </div>
 
-                {/* Right Content / Video Placeholder */}
-                <div className="flex-1 flex flex-col items-center justify-center relative z-10 min-h-[300px]">
-                    <video
-                        src={heroVideo}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover rounded-lg"
-                    />
-                </div>
-
-                {/* Background Gradients/Effects could go here */}
             </div>
 
             {/* Divider Line */}
-            <div className="h-[1px] w-full bg-[#979797]"></div>
+            <div className={`h-[1px] w-full ${dividerColor} mt-24`}></div>
         </section>
     );
 };

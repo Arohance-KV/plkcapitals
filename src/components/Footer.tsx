@@ -6,61 +6,68 @@ export const Footer: React.FC = () => {
         <footer className="bg-[#0E293C] text-white pt-20 pb-10">
             <div className="max-w-7xl mx-auto px-4 md:px-12">
 
-                {/* Top Section */}
-                <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-24 mb-20">
+                {/* Main Content Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-20">
 
-                    {/* Logo Column */}
-                    <div className="flex-shrink-0 max-w-xs">
-                        <img src={logo} alt="PLK Capital" className="h-10 md:h-12 object-contain mb-6" />
+                    {/* Part A: Company Info */}
+                    <div className="space-y-6">
+                        <img src={logo} alt="PLK Capital" className="h-10 md:h-12 object-contain mb-2" />
+                        <div className="text-gray-400 text-sm font-light space-y-2 leading-relaxed">
+                            <p><strong className="text-white">Company Name:</strong> PLK CAPITAL ADVISORS PRIVATE LIMITED</p>
+                            <p><strong className="text-white">CIN:</strong> U66190KA2025PTC210648</p>
+                            <p><strong className="text-white">SEBI RIA:</strong> -</p>
+                            <p><strong className="text-white">SEBI RA:</strong> -</p>
+                        </div>
+                    </div>
+
+                    {/* Center: Links */}
+                    <div className="md:px-4 lg:mx-auto">
+                        <h4 className="font-bold text-lg mb-6">Quick Links</h4>
+                        <ul className="space-y-3 text-gray-400 font-light text-sm">
+                            <li><a href="#" className="hover:text-white transition-colors">Disclaimer</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Regulatory Disclosure</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Complaint Table</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">Investor Charter</a></li>
+                            <li><a href="#" className="hover:text-white transition-colors">FAQs</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Part B: Contact Info */}
+                    <div className="space-y-6 lg:justify-self-end">
+                        <h4 className="font-bold text-lg mb-6">Contact Us</h4>
                         <div className="text-gray-400 text-sm font-light space-y-3 leading-relaxed">
-                            <p>Company name: PLK CAPITAL ADVISORS PRIVATE LIMITED</p>
                             <p>
-                                #51, Pushpa Vatika, 1st Floor, C Flat, Vanivilas Road,
-                                Basavanagudi, Bangalore- 560004, Karnataka
+                                <strong className="text-white block mb-1">Email:</strong>
+                                Plkcapital14@gmail.com
                             </p>
-                            <p>+91-9620050061</p>
-                            <p>Plkcapital14@gmail.com</p>
-                            <p>CIN - U66190KA2025PTC210648</p>
+                            <p>
+                                <strong className="text-white block mb-1">Number:</strong>
+                                +91-9620050061
+                            </p>
+                            <p>
+                                <strong className="text-white block mb-1">Address:</strong>
+                                #51, Pushpa Vatika, 1st Floor, C Flat,<br />
+                                Vanivilas Road, Basavanagudi,<br />
+                                Bangalore- 560004, Karnataka
+                            </p>
+                            <div className="pt-2 space-y-2">
+                                <p>
+                                    <strong className="text-white">Grievance Cell:</strong>{" "}
+                                    <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+                                        https://scores.sebi.gov.in/
+                                    </a>
+                                </p>
+                                <p>
+                                    <strong className="text-white">SMARTODR:</strong>{" "}
+                                    <a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+                                        https://smartodr.in/login
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Links Container */}
-                    <div className="flex-grow grid grid-cols-2 md:grid-cols-3 gap-8 lg:gap-16">
-
-                        {/* Column 1 */}
-                        <div className="space-y-6">
-                            <h4 className="font-bold text-lg mb-4">Important link</h4>
-                            <ul className="space-y-4 text-gray-400 font-light text-sm">
-                                <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                                <li><a href="#solutions" className="hover:text-white transition-colors">Solutions</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Client Login</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 2 */}
-                        <div className="space-y-6">
-                            <h4 className="font-bold text-lg mb-4">Community</h4>
-                            <ul className="space-y-4 text-gray-400 font-light text-sm">
-                                <li><a href="#" className="hover:text-white transition-colors">Token</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Discussion</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Voting</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Help Center</a></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 3 */}
-                        <div className="space-y-6">
-                            <h4 className="font-bold text-lg mb-4">Social Media</h4>
-                            <ul className="space-y-4 text-gray-400 font-light text-sm">
-                                <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
-                                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
                 </div>
 
                 {/* Bottom Section */}
@@ -69,6 +76,7 @@ export const Footer: React.FC = () => {
                         Copyright @2026 PLK Capital
                     </div>
                     <div className="flex gap-8">
+                        {/* Re-using links from Center column if redundancy is needed, or keeping standard bottom links */}
                         <a href="#" className="hover:text-white transition-colors">Privacy</a>
                         <a href="#" className="hover:text-white transition-colors">Security</a>
                         <a href="#" className="hover:text-white transition-colors">Terms</a>

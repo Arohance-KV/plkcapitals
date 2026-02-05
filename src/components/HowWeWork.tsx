@@ -19,7 +19,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
     // Reveal animations
     useReveal(containerRef, { threshold: 0.1 });
     useStagger(headerRef, "h2, p", { y: 20, delay: 0.1 });
-    useStagger(gridRef, ".p-8, .p-16", { y: 30, stagger: 0.1, delay: 0.2 });
+    useStagger(gridRef, ".card-item", { y: 30, stagger: 0.1, delay: 0.2 });
     useReveal(quoteRef, { y: 20, delay: 0.5 });
 
     // Styles
@@ -27,20 +27,51 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
     const textColor = isLight ? 'text-[#152E4D]' : 'text-white';
     const subTextColor = isLight ? 'text-[#152E4D]/80' : 'text-plk-grey';
     const borderColor = isLight ? 'border-black' : 'border-white/10';
-
     const separatorColor = isLight ? 'via-black' : 'via-white';
     const imageClass = isLight ? 'w-12 h-12 filter invert' : 'w-12 h-12';
 
+    const workItems = [
+        {
+            title: "Business Owners & Entrepreneurs",
+            desc: "Managing personal wealth alongside business cycles, surplus cash, and long-term family goals—while balancing growth with capital protection.",
+            icon: menuIcon
+        },
+        {
+            title: "Professionals & Senior Executives",
+            desc: "Building wealth alongside demanding careers, making thoughtful investment decisions despite limited time and market noise.",
+            icon: chartIcon
+        },
+        {
+            title: "Wealth Accumulators",
+            desc: "Looking to grow wealth steadily with structure, discipline, and risk awareness—without chasing short-term trends.",
+            icon: walletCheckIcon
+        },
+        {
+            title: "Wealth Preservers",
+            desc: "Shifting focus from aggressive growth to capital protection and sensible risk management—so important family and life commitments remain secure.",
+            icon: judgeIcon
+        },
+        {
+            title: "Retirees & Legacy Planners",
+            desc: "Prioritising regular cash flows, capital stability, and peace of mind—while planning for intergenerational wealth transfer and purposeful giving.",
+            icon: menuIcon // Reusing icon
+        }
+    ];
+
+    // Split items for staggered layout
+    const leftColumnItems = workItems.filter((_, i) => i % 2 === 0);
+    const rightColumnItems = workItems.filter((_, i) => i % 2 !== 0);
+
     return (
-        <section ref={containerRef} className={`${sectionBg} py-24`}>
+        <section id="who-we-work-with" ref={containerRef} className={`${sectionBg} py-24`}>
             <div className="max-w-7xl mx-auto px-4 md:px-12">
                 {/* Header */}
                 <div ref={headerRef} className="text-center mb-20">
-                    <h2 className={`text-4xl md:text-5xl font-serif ${textColor} mb-6`}>
-                        How We Work With Clients
+                    <h2 className={`text-4xl md:text-5xl ${textColor} mb-6`}>
+                        Who We Work With
                     </h2>
                     <p className={`${subTextColor} font-light text-lg`}>
-                        Principles that guide every client relationship
+                        Tailored guidance for every stage of your financial journey
                     </p>
                 </div>
 
@@ -50,62 +81,42 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
                     {/* Vertical Divider (Desktop Only) */}
                     <div className={`hidden md:block absolute left-1/2 top-10 bottom-10 w-[1px] bg-gradient-to-b from-transparent ${separatorColor} to-transparent opacity-20 -translate-x-1/2 z-10`}></div>
 
-                    {/* Left Column (Items 1 & 3) */}
+                    {/* Left Column (Indices 0, 2, 4) */}
                     <div className={`w-full md:w-1/2`}>
-                        {/* Item 1: Independent Advice */}
-                        <div className={`p-8 md:p-16 relative border-b ${borderColor}`}>
-                            <div className="mb-8">
-                                <img src={menuIcon} alt="Icon" className={imageClass} />
+                        {leftColumnItems.map((item, index) => (
+                            <div key={index} className={`card-item p-8 md:p-16 relative border-b ${borderColor} ${index === leftColumnItems.length - 1 ? 'md:border-b-0' : ''}`}>
+                                <div className="mb-8">
+                                    <img src={item.icon} alt="Icon" className={imageClass} />
+                                </div>
+                                <h3 className={`text-2xl ${textColor} mb-6`}>{item.title}</h3>
+                                <p className={`${subTextColor} font-light text-lg leading-relaxed`}>
+                                    {item.desc}
+                                </p>
                             </div>
-                            <h3 className={`text-2xl font-serif ${textColor} mb-6`}>Independent Advice</h3>
-                            <p className={`${subTextColor} font-light text-lg leading-relaxed`}>
-                                We provide advice that is free from product commissions, incentives, or targets—so recommendations are guided only by what is right for you.
-                            </p>
-                        </div>
-
-                        {/* Item 3: Long-Term Discipline */}
-                        <div className={`p-8 md:p-16 relative border-b md:border-b-0 ${borderColor}`}>
-                            <div className="mb-8">
-                                <img src={chartIcon} alt="Icon" className={imageClass} />
-                            </div>
-                            <h3 className={`text-2xl font-serif ${textColor} mb-6`}>Long-Term Discipline</h3>
-                            <p className={`${subTextColor} font-light text-lg leading-relaxed`}>
-                                We focus on consistency, asset allocation, and behaviour over time—rather than reacting to short-term market movements or noise.
-                            </p>
-                        </div>
+                        ))}
                     </div>
 
-                    {/* Right Column (Items 2 & 4) - Staggered Down */}
-                    <div className="w-full md:w-1/2 md:mt-24">
-                        {/* Item 2: Risk Before Returns */}
-                        <div className={`p-8 md:p-16 relative border-b ${borderColor}`}>
-                            <div className="mb-8">
-                                <img src={walletCheckIcon} alt="Icon" className={imageClass} />
+                    {/* Right Column (Indices 1, 3) */}
+                    <div className={`w-full md:w-1/2 md:mt-24`}>
+                        {rightColumnItems.map((item, index) => (
+                            <div key={index} className={`card-item p-8 md:p-16 relative border-b ${index === rightColumnItems.length - 1 ? 'border-b-0' : ''} ${borderColor}`}>
+                                <div className="mb-8">
+                                    <img src={item.icon} alt="Icon" className={imageClass} />
+                                </div>
+                                <h3 className={`text-2xl ${textColor} mb-6`}>{item.title}</h3>
+                                <p className={`${subTextColor} font-light text-lg leading-relaxed`}>
+                                    {item.desc}
+                                </p>
                             </div>
-                            <h3 className={`text-2xl font-serif ${textColor} mb-6`}>Risk Before Returns</h3>
-                            <p className={`${subTextColor} font-light text-lg leading-relaxed`}>
-                                Every portfolio is built around an agreed understanding of risk. Protecting capital and managing downside always come before pursuing returns.
-                            </p>
-                        </div>
-
-                        {/* Item 4: Fiduciary Responsibility */}
-                        <div className={`p-8 md:p-16 relative`}>
-                            <div className="mb-8">
-                                <img src={judgeIcon} alt="Icon" className={imageClass} />
-                            </div>
-                            <h3 className={`text-2xl font-serif ${textColor} mb-6`}>Fiduciary Responsibility</h3>
-                            <p className={`${subTextColor} font-light text-lg leading-relaxed`}>
-                                As a fee-only fiduciary, we are legally and ethically required to act in our clients' best interest—clearly, independently, and without conflict.
-                            </p>
-                        </div>
+                        ))}
                     </div>
 
                 </div>
 
                 {/* Footer Quote */}
                 <div ref={quoteRef} className="text-center mt-20 max-w-4xl mx-auto opacity-0">
-                    <p className={`text-2xl md:text-3xl font-serif ${textColor} leading-normal`}>
-                        While markets change, our responsibility remains the same—helping clients make better decisions, consistently
+                    <p className={`text-2xl md:text-3xl ${textColor} leading-normal`}>
+                        While life stages differ, our role remains the same providing clarity, discipline, and steady guidance through changing needs.
                     </p>
                 </div>
 

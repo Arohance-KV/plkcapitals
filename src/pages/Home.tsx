@@ -9,10 +9,10 @@ export const Home: React.FC = () => {
   return (
     <main className="flex-grow bg-plk-navy">
       <Hero />
-      <Philosophy />
+      <Philosophy variant="light" />
       <WhatWeDo />
       <AboutUs />
-      <HowWeWork />
+      {/* <HowWeWork /> */}
     </main>
   );
 };

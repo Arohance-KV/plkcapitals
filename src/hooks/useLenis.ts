@@ -1,16 +1,26 @@
 import { useEffect, useRef } from 'react';
 import Lenis from '@studio-freight/lenis';
-import { gsap, ScrollTrigger } from '@/src/lib/gsap';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Global Lenis instance for external access
+let lenisInstance: Lenis | null = null;
+
+export const getLenis = () => lenisInstance;
 
 const useLenis = () => {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
-      lerp: 0.08,
+      duration: 2.5, // Slow, heavy feel
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 0.8, // Reduces scroll sensitivity for "heavier" feel
     });
 
     lenisRef.current = lenis;
+    lenisInstance = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -42,6 +52,7 @@ const useLenis = () => {
 
     return () => {
       lenis.destroy();
+      lenisInstance = null;
     };
   }, []);
 

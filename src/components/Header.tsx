@@ -3,55 +3,18 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLoadReveal, useHeaderScroll } from '../hooks/useGsap';
 import gsap from 'gsap';
 import logo from '../assets/logo.png';
-import logo2 from '../assets/logo2.png';
+
+import { Menu, MenuItem, HoveredLink } from '../ui/navbar-menu';
 
 export const Header: React.FC = () => {
     const location = useLocation();
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const isLightPage = location.pathname === '/about';
+
+    const [active, setActive] = useState<string | null>(null);
+    const isLightPage = location.pathname === '/about' || location.pathname === '/';
     const headerRef = useRef<HTMLElement>(null);
-    const menuRef = useRef<HTMLDivElement>(null);
-    const menuLinksRef = useRef<HTMLDivElement>(null);
 
     useLoadReveal(headerRef, { y: -20, duration: 1, delay: 0.2 });
     useHeaderScroll(headerRef);
-
-    // Toggle menu and animate
-    useEffect(() => {
-        if (!menuRef.current) return;
-
-        if (isMenuOpen) {
-            // Prevent scrolling when menu is open
-            document.body.style.overflow = 'hidden';
-
-            const ctx = gsap.context(() => {
-                const tl = gsap.timeline();
-                tl.to(menuRef.current, {
-                    clipPath: 'circle(150% at 100% 0%)',
-                    duration: 0.8,
-                    ease: 'power4.inOut'
-                });
-                tl.fromTo('.mobile-link',
-                    { y: 50, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out' },
-                    "-=0.4"
-                );
-            });
-            return () => ctx.revert();
-        } else {
-            document.body.style.overflow = 'unset';
-            gsap.to(menuRef.current, {
-                clipPath: 'circle(0% at 100% 0%)',
-                duration: 0.6,
-                ease: 'power4.inOut'
-            });
-        }
-    }, [isMenuOpen]);
-
-
-    useEffect(() => {
-        setIsMenuOpen(false);
-    }, [location.pathname]);
 
     // Styles based on page context
     const navContainerClass = isLightPage
@@ -59,78 +22,79 @@ export const Header: React.FC = () => {
         : "border border-white/20 bg-plk-navy/50 backdrop-blur-sm";
 
     const textColor = isLightPage ? "text-[#0B1B2F]" : "text-plk-white";
-    const logoSrc = location.pathname === '/' ? logo : logo2;
+    const logoSrc = logo;
 
     return (
-        <>
-            <header ref={headerRef} className="fixed top-0 left-0 w-full py-6 px-4 md:px-12 z-50 opacity-0 transition-opacity">
-                {/* Desktop Layout */}
-                <div className="hidden md:grid grid-cols-3 items-center max-w-7xl mx-auto">
-                    {/* Left: Logo */}
-                    <div className="flex justify-start">
-                        <Link to="/">
-                            <img src={logoSrc} alt="PLK Capital" className="h-10 md:h-12 w-auto object-contain" />
-                        </Link>
-                    </div>
-
-                    {/* Center: Nav */}
-                    <div className="flex justify-center">
-                        <nav className={`flex items-center gap-8 rounded-full px-12 py-3 ${navContainerClass} whitespace-nowrap transition-all duration-300`}>
-                            <Link to="/about" className={`text-sm font-medium ${location.pathname === '/about' ? 'text-plk-lima' : textColor} hover:text-plk-lima`}>About Us</Link>
-                            <Link to="/services" className={`text-sm font-medium ${location.pathname === '/services' ? 'text-plk-lima' : textColor} hover:text-plk-lima`}>Solutions</Link>
-                            <Link to="/contact" className={`text-sm font-medium ${textColor} hover:text-plk-lima`}>Lets Chat</Link>
-                        </nav>
-                    </div>
-
-                    {/* Right: Empty Spacer */}
-                    <div className="flex justify-end"></div>
-                </div>
-
-                {/* Mobile Layout */}
-                <div className="flex md:hidden justify-between items-center bg-transparent">
+        <header ref={headerRef} className="fixed top-0 left-0 w-full py-4 md:py-6 px-4 md:px-12 z-50 opacity-0 transition-opacity">
+            <div className="flex flex-col md:grid md:grid-cols-3 items-center max-w-7xl mx-auto gap-4 md:gap-0">
+                {/* Left: Logo */}
+                <div className="flex justify-center md:justify-start">
                     <Link to="/">
-                        <img src={logoSrc} alt="PLK Capital" className="h-8 w-auto object-contain" />
+                        <img src={logoSrc} alt="PLK Capital" className="h-8 md:h-12 w-auto object-contain" />
                     </Link>
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className={`relative z-[60] p-2 flex flex-col gap-1.5 items-end group`}
-                    >
-                        <span className={`w-8 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? '-rotate-45 translate-y-2' : ''} ${textColor}`}></span>
-                        <span className={`w-6 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''} ${textColor}`}></span>
-                        <span className={`w-8 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'rotate-45 -translate-y-2' : ''} ${textColor}`}></span>
-                    </button>
                 </div>
-            </header>
 
-            {/* Mobile Menu Overlay */}
-            <div
-                ref={menuRef}
-                className="fixed inset-0 bg-[#0B1B2F] z-[55] flex flex-col items-center justify-center pointer-events-none data-[open=true]:pointer-events-auto"
-                style={{ clipPath: 'circle(0% at 100% 0%)' }}
-                data-open={isMenuOpen}
-            >
-                {/* Close Button */}
-                <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="absolute top-6 right-4 p-2 text-white hover:text-plk-lima transition-colors"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
+                {/* Center: Nav */}
+                <div className="flex justify-center w-full md:w-auto">
+                    <Menu setActive={setActive}>
+                        <MenuItem setActive={setActive} active={active} item="About Us" href="/about" className="text-xs md:text-sm font-medium hover:text-plk-lima">
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-12 p-4 md:p-6 w-[85vw] md:w-[600px] max-h-[60vh] overflow-y-auto md:overflow-visible">
+                                {/* Left Content */}
+                                <div className="flex-1 border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-6">
+                                    <div className="text-xs md:text-sm font-semibold tracking-widest text-plk-lima uppercase mb-1 md:mb-2 text-left">About Us</div>
+                                    <p className="text-base md:text-lg  text-white leading-relaxed">
+                                        We believe wealth management should always be independent and in the client’s best interest.
+                                    </p>
+                                </div>
+                                {/* Right Links */}
+                                <div className="flex-1 flex flex-col space-y-3 md:space-y-4 justify-center">
+                                    <div className="text-xs md:text-sm font-semibold tracking-widest text-plk-lima uppercase mb-1 md:mb-2 text-left">Sections</div>
+                                    <HoveredLink href="/about#belief-step-1" onClick={() => setActive(null)}>Our Belief</HoveredLink>
+                                    <HoveredLink href="/about#fee-anchor" onClick={() => setActive(null)}>Why We Are Fee-Only</HoveredLink>
+                                    <HoveredLink href="/about#how-we-think" onClick={() => setActive(null)}>How We Think About Money</HoveredLink>
+                                    <HoveredLink href="/about#who-we-work-with" onClick={() => setActive(null)}>Who We Work With</HoveredLink>
+                                </div>
+                            </div>
+                        </MenuItem>
+                        <MenuItem setActive={setActive} active={active} item="Solutions" className="text-xs md:text-sm font-medium hover:text-plk-lima">
+                            <div className="flex flex-col md:flex-row gap-4 md:gap-4 p-4 md:p-6 w-[85vw] md:w-[650px] items-stretch max-h-[60vh] overflow-y-auto md:overflow-visible">
+                                {/* Left: Wealth Management */}
+                                <div className="flex-1 rounded-lg hover:bg-white/5 transition-colors p-3 md:p-4 group">
+                                    <Link to="/wealth-management" onClick={() => setActive(null)} className="block h-full">
+                                        <div className="flex flex-col h-full justify-between space-y-2">
+                                            <div>
+                                                <h4 className="text-lg md:text-xl font-montserrat text-white group-hover:text-plk-lima transition-colors mb-2">Wealth Management</h4>
+                                                <p className="text-xs md:text-sm text-white/50 leading-relaxed">For Individuals & Families</p>
+                                            </div>
+                                            <span className="text-plk-lima text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity">Explore &rarr;</span>
+                                        </div>
+                                    </Link>
+                                </div>
 
-                <nav ref={menuLinksRef} className="flex flex-col items-center gap-10 text-center">
-                    <Link to="/" className="mobile-link text-4xl font-serif text-white hover:text-plk-lima transition-colors">Home</Link>
-                    <Link to="/about" className="mobile-link text-4xl font-serif text-white hover:text-plk-lima transition-colors">About Us</Link>
-                    <Link to="/services" className="mobile-link text-4xl font-serif text-white hover:text-plk-lima transition-colors" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
-                    <Link to="/contact" className="mobile-link text-4xl font-serif text-white hover:text-plk-lima transition-colors" onClick={() => setIsMenuOpen(false)}>Lets Chat</Link>
+                                {/* Divider */}
+                                <div className="h-[1px] w-full md:w-[1px] md:h-auto bg-white/10 my-2 md:my-0"></div>
 
-                    <div className="mobile-link mt-12 pt-12 border-t border-white/10 w-full max-w-[200px]">
-                        <p className="text-plk-grey text-xs tracking-widest uppercase mb-4">Contact</p>
-                        <p className="text-white text-sm">hello@plkcapital.com</p>
-                    </div>
-                </nav>
+                                {/* Right: Liquidity Management */}
+                                <div className="flex-1 rounded-lg hover:bg-white/5 transition-colors p-3 md:p-4 group">
+                                    <Link to="/liquidity-management" onClick={() => setActive(null)} className="block h-full">
+                                        <div className="flex flex-col h-full justify-between space-y-2">
+                                            <div>
+                                                <h4 className="text-lg md:text-xl font-montserrat text-white group-hover:text-plk-lima transition-colors mb-2">Liquidity Management</h4>
+                                                <p className="text-xs md:text-sm text-white/50 leading-relaxed">For Business & Corporates</p>
+                                            </div>
+                                            <span className="text-plk-lima text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity">Explore &rarr;</span>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
+                        </MenuItem>
+                        <Link to="/contact" onMouseEnter={() => setActive(null)} className="text-xs md:text-sm font-medium text-white hover:text-plk-lima">Lets Chat</Link>
+                    </Menu>
+                </div>
+
+                {/* Right: Empty Spacer (Hidden on mobile) */}
+                <div className="hidden md:flex justify-end"></div>
             </div>
-        </>
+        </header>
     );
 };

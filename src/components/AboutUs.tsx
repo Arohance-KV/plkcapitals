@@ -4,12 +4,17 @@ import aboutUs1 from '../assets/aboutUs1.png';
 import aboutUs2 from '../assets/aboutUs2.png';
 import emoji from '../assets/emoji.png';
 
-export const AboutUs: React.FC = () => {
+interface AboutUsProps {
+    variant?: 'default' | 'light';
+}
+
+export const AboutUs: React.FC<AboutUsProps> = ({ variant = 'default' }) => {
+    const isLight = variant === 'light';
     const topSectionRef = useRef<HTMLDivElement>(null);
     const bottomSectionRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    const btn1Ref = useRef<HTMLButtonElement>(null);
+    const btn1Ref = useRef<HTMLAnchorElement>(null);
     const btn2Ref = useRef<HTMLButtonElement>(null);
 
     // Reveal top section content
@@ -23,41 +28,46 @@ export const AboutUs: React.FC = () => {
     useHover(btn1Ref, { scale: 1.05 });
     useHover(btn2Ref, { scale: 1.05 });
 
+    const textColor = isLight ? 'text-[#0E293C]' : 'text-white';
+    const subTextColor = isLight ? 'text-[#0E293C]/80' : 'text-plk-grey';
+    const buttonBg = isLight ? 'bg-[#0E293C]' : 'bg-[#112240]';
+    const buttonBorder = isLight ? 'border-[#0E293C]' : 'border-[#1E3A5F]';
+    const buttonText = isLight ? 'text-white' : 'text-plk-lima';
+    const buttonHoverBg = isLight ? 'hover:bg-[#152E4D]' : 'hover:bg-[#1E3A5F]';
+    const buttonHoverText = isLight ? 'hover:text-white' : 'hover:text-white';
+
     return (
         <section className="py-24">
             {/* Top Section */}
-            <div ref={topSectionRef} className="max-w-7xl mx-auto px-4 md:px-12 text-center mb-20">
-                <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
+            <div ref={topSectionRef} className="max-w-7xl mx-auto px-4 md:px-12 text-left mb-20">
+                <h2 className={`text-4xl md:text-6xl ${textColor} mb-6 leading-tight`}>
                     Financial peace of mind.
                 </h2>
-                <p className="text-xl md:text-2xl text-plk-grey font-light mb-12">
-                    Something worth building over time.
+                <p className={`text-xl md:text-2xl ${subTextColor} font-light mb-12`}>
+                    Something worth building patiently over time.
                 </p>
-                <div className="flex justify-center">
-                    <button ref={btn1Ref} className="bg-[#112240] text-plk-lima border border-[#1E3A5F] px-8 py-3 rounded-md text-lg hover:bg-[#1E3A5F] hover:text-white transition-all duration-300">
+                <div className="flex justify-start">
+                    <a href="/contact" ref={btn1Ref} className={`${buttonBg} ${buttonText} border ${buttonBorder} px-8 py-3 rounded-md text-lg ${buttonHoverBg} ${buttonHoverText} transition-all duration-300 inline-block`}>
                         Schedule a Conversation
-                    </button>
+                    </a>
                 </div>
+                <p className={`text-xl md:text-2xl ${subTextColor} font-light mt-8`}>
+                    Many of our clients begin with a simple conversation before deciding anything further.
+                </p>
             </div>
 
             {/* Bottom Content Container */}
-            <div ref={bottomSectionRef} className="max-w-7xl mx-auto px-4 md:px-12 opacity-0">
+            {/* <div ref={bottomSectionRef} className="max-w-7xl mx-auto px-4 md:px-12 opacity-0">
                 <div className="bg-[#0D1625] rounded-lg p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row gap-16 items-center">
-
-                    {/* Left: Staggered Grid Layout */}
                     <div className="flex-1 w-full max-w-md lg:max-w-none">
                         <div className="grid grid-cols-2 gap-4 auto-rows-min">
-
-                            {/* Col 1: Large Portrait (Spans 2 rows visually roughly) */}
                             <div className="relative row-span-2">
                                 <img src={aboutUs1} alt="Profile" className="w-full h-[250px] md:h-[350px] object-cover rounded-lg" />
-                                {/* Small ratings card overlay/below */}
                                 <div className="absolute -bottom-3 md:-bottom-12 -left-2 -right-2 md:left-2 md:right-2 z-10">
                                     <img src={emoji} alt="Best ratings" className="w-full h-auto object-contain drop-shadow-xl" />
                                 </div>
                             </div>
 
-                            {/* Col 2: Top Card + Bottom Image */}
                             <div className="space-y-4 pt-8 md:pt-12">
                                 <div className="bg-white p-6 rounded-lg shadow-sm">
                                     <div className="text-2xl font-bold text-plk-navy mb-1">30,000+</div>
@@ -65,8 +75,6 @@ export const AboutUs: React.FC = () => {
                                     <div className="h-1 w-full bg-plk-red/20 mt-2 rounded">
                                         <div className="h-full w-2/3 bg-plk-green rounded"></div>
                                     </div>
-
-                                    {/* Mini avatars placeholder */}
                                     <div className="flex -space-x-2 mt-4">
                                         {[1, 2, 3, 4].map(i => (
                                             <div key={i} className="h-6 w-6 rounded-full bg-gray-300 border-2 border-white"></div>
@@ -77,8 +85,6 @@ export const AboutUs: React.FC = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Right: Content */}
                     <div ref={contentRef} className="flex-1 space-y-8 mt-12 lg:mt-0">
                         <div>
                             <span className="tracking-[0.2em] text-sm font-semibold uppercase block mb-4" style={{ color: '#50D28A' }}>A BIT</span>
@@ -96,7 +102,7 @@ export const AboutUs: React.FC = () => {
                     </div>
 
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 };

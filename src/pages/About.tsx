@@ -1,25 +1,229 @@
-import React, { useRef } from 'react';
-import { useReveal, useStagger } from '../hooks/useGsap';
+import { AboutHero } from '../components/AboutHero';
+import { SplitText } from '../components/SplitText';
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { getLenis } from '../hooks/useLenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import profileImg from '../assets/aboutUs1.png';
 import { WhatWeDo } from '../components/WhatWeDo';
 import { HowWeWork } from '../components/HowWeWork';
-import profileImg from '../assets/aboutUs1.png';
+import { useReveal, useStagger } from '../hooks/useGsap';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const About: React.FC = () => {
   const section1Ref = useRef<HTMLElement>(null);
-  const section2Ref = useRef<HTMLElement>(null);
+  const startRef = useRef<HTMLElement>(null);
   const section3Ref = useRef<HTMLElement>(null);
+  const section4Ref = useRef<HTMLElement>(null);
+  const chatRef = useRef<HTMLElement>(null);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      // slight delay to ensure content is rendered/measured
+      setTimeout(() => {
+        const lenis = getLenis();
+        const target = document.querySelector(location.hash) as HTMLElement;
+        if (target && lenis) {
+          ScrollTrigger.refresh();
+          lenis.scrollTo(target, {
+            offset: 0,
+            duration: 1.5,
+            lock: true,
+            force: true
+          });
+        } else if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
 
   useReveal(section1Ref, { threshold: 0.1 });
   useStagger(section1Ref, ".md\\:w-1\\/3, .md\\:w-2\\/3 > *", { y: 30, stagger: 0.2, delay: 0.2 });
 
-  useReveal(section2Ref, { threshold: 0.1 });
-  useStagger(section2Ref, ".max-w-4xl > *", { y: 30, stagger: 0.15, delay: 0.2 });
+  // Simple reveal for Chat section
+  useReveal(chatRef, { threshold: 0.2 });
+  useStagger(chatRef, ".reveal-item", { y: 20, stagger: 0.1, delay: 0.2 });
 
-  useReveal(section3Ref, { threshold: 0.1 });
-  useStagger(section3Ref, "h2, .max-w-lg, p, .grid, .space-y-6 > *", { y: 30, stagger: 0.1, delay: 0.2 });
+  // Animation for "How We Think"
+  useEffect(() => {
+    const el = section4Ref.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: "top 70%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Elements
+      const introWords = el.querySelectorAll('#think-intro .split-word');
+      const subheader = el.querySelector('#think-subheader');
+      const items = el.querySelectorAll('.think-item');
+
+      const animConfig = {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.03
+      };
+
+      // Sequence
+      tl.to(introWords, { ...animConfig, duration: 1.5, stagger: 0.05 })
+        .to(subheader, { opacity: 1, duration: 1 }, ">0.3")
+        .to(items, { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "power2.out" }, ">0.2");
+
+    }, section4Ref);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Animation for "Our Belief" - Refactored to Independent Triggers
+  useEffect(() => {
+    const el = startRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      // Step 1
+      gsap.to(el.querySelectorAll('#belief-step-1 .split-word'), {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1.5, stagger: 0.08, ease: "power3.out",
+        scrollTrigger: {
+          trigger: '#belief-step-1',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Step 2
+      gsap.to(el.querySelectorAll('#belief-step-2 .split-word'), {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1, stagger: 0.03, ease: "power3.out",
+        scrollTrigger: {
+          trigger: '#belief-step-2',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Step 3
+      gsap.to(el.querySelectorAll('.belief-step-3-item'), {
+        opacity: 1, y: 0,
+        duration: 1, stagger: 0.3, ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.belief-step-3-item', // triggers on the first one
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Step 4
+      gsap.to(el.querySelectorAll('#belief-step-4 .split-word'), {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1, stagger: 0.03, ease: "power3.out",
+        scrollTrigger: {
+          trigger: '#belief-step-4',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+    }, startRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // Animation for "Fee Only" - Refactored to Independent Triggers
+  useEffect(() => {
+    const el = section3Ref.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      const animConfig = {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1, ease: "power3.out", stagger: 0.03
+      };
+
+      // Anchor
+      gsap.to(el.querySelectorAll('#fee-anchor .split-word'), {
+        ...animConfig, duration: 1.5, stagger: 0.05,
+        scrollTrigger: {
+          trigger: '#fee-anchor',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Body
+      gsap.to(el.querySelectorAll('#fee-body .split-word'), {
+        ...animConfig, duration: 1.2,
+        scrollTrigger: {
+          trigger: '#fee-body',
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Statement
+      gsap.to(el.querySelectorAll('#fee-statement .split-word'), {
+        ...animConfig, duration: 1.2,
+        scrollTrigger: {
+          trigger: '#fee-statement',
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Practice Header
+      gsap.to(el.querySelector('#fee-practice-header'), {
+        opacity: 1, y: 0, duration: 1,
+        scrollTrigger: {
+          trigger: '#fee-practice-header',
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Practice Items
+      gsap.to(el.querySelectorAll('.fee-practice-item'), {
+        opacity: 1, x: 0, duration: 0.8, stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.fee-practice-item',
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Last Item
+      gsap.to(el.querySelectorAll('#fee-last-item .split-word'), {
+        ...animConfig, duration: 1.2,
+        scrollTrigger: {
+          trigger: '#fee-last-item',
+          start: "top 90%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+    }, section3Ref);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <main className="flex-grow bg-[#F7F2EF] text-[#0B1B2F] pt-32 pb-20 overflow-hidden">
+    <main className="flex-grow bg-[#F7F2EF] text-[#0B1B2F] overflow-hidden">
+
+      <AboutHero />
+
+      <div className="pt-20"></div> {/* Spacer for visual separation */}
 
       {/* Section 1: Profile & Quote */}
       <section ref={section1Ref} className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 mb-24 md:mb-32 px-6 md:px-12 opacity-0">
@@ -33,12 +237,12 @@ export const About: React.FC = () => {
 
         {/* Quote */}
         <div className="w-full md:w-2/3 flex flex-col items-center md:items-start space-y-8">
-          <blockquote className="text-xl md:text-3xl font-serif leading-relaxed text-[#594D46] text-center md:text-left">
+          <blockquote className="text-xl md:text-3xl leading-relaxed text-[#594D46] text-center md:text-left">
             “Clients trust us with decisions that affect their families, their businesses, and their future.
             <br className="hidden md:block" />
             <br className="hidden md:block" />
             <span className="md:hidden"><br /></span>
-            Our responsibility is to act in their best interest—clearly, independently, and without conflict.”
+            Our responsibility is to act in their best interest clearly, independently, and without conflict.”
           </blockquote>
 
           <div className="w-16 h-[1px] bg-[#0B1B2F]/20 md:hidden"></div>
@@ -49,97 +253,200 @@ export const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 2: Our Belief (Full Width White) */}
-      <section ref={section2Ref} className="w-full bg-white py-32 mb-32 opacity-0">
-        <div className="max-w-4xl mx-auto text-center px-4 md:px-12">
-          <h2 className="text-2xl md:text-3xl font-serif text-[#0B1B2F] uppercase tracking-wider mb-8">
-            OUR BELIEF
-          </h2>
+      {/* Section 2: Our Belief (Refactored) */}
+      <section ref={startRef} className="w-full bg-[#FAF9F6] py-32 mb-32">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="max-w-4xl flex flex-col items-start text-left space-y-6 md:space-y-8">
 
-          {/* Divider 1 */}
-          <div className="h-[1px] w-full max-w-lg mx-auto bg-gradient-to-r from-transparent via-[#0B1B2F]/30 to-transparent mb-16"></div>
+            {/* STEP 1: Main Anchor */}
+            <div className="space-y-4">
+              <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-6 opacity-60">Our Belief</div>
+              <SplitText
+                id="belief-step-1"
+                className="text-3xl md:text-4xl lg:text-5xl text-[#0B1B2F] leading-tight"
+                text="We believe wealth management works best when advice is independent and aligned with the client."
+              />
+            </div>
 
-          <p className="text-xl md:text-2xl font-serif text-[#0B1B2F] mb-12 leading-relaxed">
-            We believe wealth management works best when advice is independent and aligned with the client.
-          </p>
+            {/* STEP 2: Human Context */}
+            <div className="w-full">
+              <SplitText
+                id="belief-step-2"
+                className="text-lg md:text-xl font-light text-[#594D46] leading-relaxed"
+                text="Money decisions are deeply personal. They affect families, responsibilities, and peace of mind not just returns."
+              />
+            </div>
 
-          {/* Divider 2 */}
-          <div className="h-[1px] w-full max-w-lg mx-auto bg-gradient-to-r from-transparent via-[#0B1B2F]/30 to-transparent mb-16"></div>
+            {/* STEP 3: Three Principles */}
+            <div className="flex flex-col space-y-3 md:space-y-4">
+              <div className="h-[1px] w-12 bg-[#0B1B2F]/20 mb-2"></div>
+              {[
+                "Clarity over complexity",
+                "Discipline over excitement",
+                "Guidance through all market conditions"
+              ].map((item, i) => (
+                <div key={i} className="belief-step-3-item text-xl md:text-2xl text-[#0B1B2F] opacity-0 translate-y-4">
+                  {item}
+                </div>
+              ))}
+            </div>
 
-          <div className="space-y-4 text-lg md:text-xl font-light text-[#594D46]">
-            <p>Clarity over complexity</p>
-            <p>Discipline over excitement</p>
-            <p>Guidance through all market conditions</p>
+            {/* STEP 4: Role Clarity */}
+            <div className="max-w-2xl bg-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F] shadow-sm">
+              <SplitText
+                id="belief-step-4"
+                className="text-lg md:text-xl font-light text-[#0B1B2F] italic leading-relaxed"
+                text="Our role is not to predict markets, but to help clients make better decisions consistently especially when it matters most."
+              />
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Section 3: Fee-Only */}
-      <section ref={section3Ref} className="max-w-5xl mx-auto text-center px-4 md:px-12 opacity-0">
-        <h2 className="text-2xl md:text-3xl font-serif text-[#0B1B2F] uppercase tracking-wider mb-8">
-          WHY WE ARE FEE-ONLY
-        </h2>
+      {/* Section 3: Fee-Only*/}
+      <section ref={section3Ref} className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-32">
+        <div className="max-w-3xl flex flex-col items-start text-left space-y-6 md:space-y-8">
 
-        {/* Divider 3 */}
-        <div className="h-[1px] w-full max-w-lg mx-auto bg-gradient-to-r from-transparent via-[#0B1B2F]/30 to-transparent mb-16"></div>
-
-        <p className="text-lg md:text-xl font-medium text-[#0B1B2F] mb-8">
-          We work as a fiduciary—legally and ethically required to act in our clients’ best interest.
-        </p>
-
-        <p className="text-lg text-[#594D46] font-light mb-16 max-w-3xl mx-auto">
-          In simple terms, this means our advice is driven only by what is right for you—not by commissions, targets, or product incentives.
-        </p>
-
-        {/* Two Column Text Content */}
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 mb-16 text-left">
-          {/* Left Column */}
-          <div className="bg-white p-8 md:p-12 shadow-sm rounded-sm">
-            <h3 className="text-xl md:text-2xl font-serif text-[#0B1B2F] mb-8">
-              We Are Paid Only by our Clients.
-            </h3>
-            <ul className="space-y-4 text-lg text-[#594D46] font-light">
-              <li>No commissions</li>
-              <li>No product incentives</li>
-              <li>No hidden costs</li>
-              <li>No pressure to buy or change investments</li>
-            </ul>
+          <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-2 opacity-60">
+            WHY WE ARE FEE-ONLY
           </div>
 
-          {/* Right Column */}
-          <div className="bg-[#F7F2EF] md:bg-white p-8 md:p-12 shadow-sm rounded-sm">
-            <h3 className="text-xl md:text-2xl font-serif text-[#0B1B2F] mb-8">
-              What This Means in Practice
+          {/* Anchor */}
+          <SplitText
+            id="fee-anchor"
+            className="text-2xl md:text-3xl lg:text-4xl text-[#0B1B2F] leading-tight"
+            text="We work as a fiduciary legally and ethically required to act in our clients’ best interest."
+          />
+
+          {/* Body */}
+          <SplitText
+            id="fee-body"
+            className="text-lg md:text-xl font-light text-[#594D46] leading-relaxed"
+            text="In simple terms, this means our advice is driven only by what is right for you not by commissions, targets, or product incentives."
+          />
+
+          {/* Statement */}
+          <SplitText
+            id="fee-statement"
+            className="text-xl md:text-2xl font-medium text-[#0B1B2F]"
+            text="We are paid only by our clients."
+          />
+
+          {/* Practice List */}
+          <div className="w-full bg-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F]/20 shadow-sm mt-4">
+            <h3 id="fee-practice-header" className="text-lg  text-[#0B1B2F] mb-6 opacity-0 translate-y-4">
+              What this means in practice
             </h3>
-            <ul className="space-y-4 text-lg text-[#594D46] font-light list-disc pl-5">
-              <li>No commissions</li>
-              <li>No product incentives</li>
-              <li>No hidden costs</li>
-              <li>No pressure to buy or change investments</li>
-              <li>
-                If we ever believe something is not right for you, we will say no—even if it means we earn less.
+            <ul className="space-y-4">
+              {[
+                "No commissions",
+                "No product incentives",
+                "No hidden costs",
+                "No pressure to buy or change investments"
+              ].map((item, i) => (
+                <li key={i} className="fee-practice-item flex items-center space-x-3 opacity-0 -translate-x-4">
+                  <span className="w-1.5 h-1.5 bg-[#0B1B2F] rounded-full"></span>
+                  <span className="text-lg text-[#594D46] font-light">{item}</span>
+                </li>
+              ))}
+
+              {/* Last item as split text */}
+              <li className="pt-4 mt-4 border-t border-[#0B1B2F]/10">
+                <SplitText
+                  id="fee-last-item"
+                  className="text-lg text-[#0B1B2F] font-medium italic"
+                  text="If we ever believe something is not right for you, we will say no even if it means we earn less."
+                />
               </li>
             </ul>
           </div>
-        </div>
 
-        <div className="space-y-6 text-[#594D46] font-light max-w-3xl mx-auto">
-          <p>
-            Money decisions are rarely just about numbers.
-          </p>
-          <p>
-            They are shaped by responsibilities, future commitments, cash flows, and uncertainty.
-          </p>
-          <p>
-            Our role is to bring structure and clarity — so your wealth quietly supports your life, allowing you to focus on other important things.
-          </p>
         </div>
-
       </section>
 
-      {/* Reused Sections (Light Variant) */}
-      <WhatWeDo variant="light" />
+      {/* Section 4: How We Think About Money */}
+      <section id="how-we-think" ref={section4Ref} className="w-full bg-[#FAF9F6] py-32 mb-32">
+        <div className="max-w-6xl mx-auto px-6 md:px-12">
+          <div className="max-w-3xl flex flex-col items-start text-left space-y-16">
+
+            <div className="space-y-6">
+              <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-2 opacity-60">
+                HOW WE THINK ABOUT MONEY
+              </div>
+
+              <SplitText
+                id="think-intro"
+                className="text-2xl md:text-3xl lg:text-4xl text-[#0B1B2F] leading-tight"
+                text="We believe long-term outcomes are shaped more by how decisions are made than by trying to predict what markets will do next."
+              />
+            </div>
+
+            <div className="space-y-12 w-full">
+              <h3 id="think-subheader" className="text-lg md:text-xl font-light text-[#594D46] opacity-0">
+                Our approach is built on a few simple principles:
+              </h3>
+
+              <div className="grid gap-10 md:gap-12">
+                {[
+                  {
+                    title: "Risk comes before returns",
+                    desc: "Protecting capital matters more than chasing the highest possible return."
+                  },
+                  {
+                    title: "Asset allocation drives outcomes",
+                    desc: "Over long periods, the majority of results are driven by how assets are allocated and rebalanced—not by selecting the next best fund or stock."
+                  },
+                  {
+                    title: "Costs, taxes, and behaviour matter",
+                    desc: "What investors keep after costs, taxes, and emotional decisions matters more than headline returns."
+                  },
+                  {
+                    title: "Markets move in cycles, not straight lines",
+                    desc: "Volatility is not a problem to be avoided, but a reality to be managed with discipline."
+                  },
+                  {
+                    title: "Good advice is ongoing",
+                    desc: "Wealth management is not a one-time decision. It requires regular review, thoughtful adjustments, and steady guidance over time."
+                  }
+                ].map((item, i) => (
+                  <div key={i} className="think-item flex flex-col space-y-2 opacity-0 translate-y-4">
+                    <h4 className="text-xl md:text-2xl text-[#0B1B2F]">{item.title}</h4>
+                    <p className="text-lg text-[#594D46] font-light leading-relaxed max-w-2xl">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
       <HowWeWork variant="light" />
+
+      {/* Section 5: Let's Chat */}
+      <section ref={chatRef} className="w-full bg-white py-32">
+        <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
+          <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-8 opacity-60">
+            LET’S CHAT
+          </div>
+
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#0B1B2F] mb-8 leading-tight opacity-0 translate-y-4 reveal-item">
+            A conversation is often the best place to begin.
+          </h2>
+
+          <p className="text-lg md:text-xl text-[#594D46] font-light leading-relaxed mb-12 opacity-0 translate-y-4 reveal-item">
+            We usually start by listening understanding your priorities, responsibilities, and what you’re looking to achieve.
+            <br /><br />
+            If it feels right, we take the next steps together.
+          </p>
+
+          <div className="opacity-0 translate-y-4 reveal-item">
+            <a href="/contact" className="inline-block bg-[#0B1B2F] text-white text-lg px-8 py-4 rounded-sm hover:bg-[#152E4D] transition-colors duration-300">
+              Schedule a Conversation
+            </a>
+          </div>
+        </div>
+      </section>
 
     </main>
   );

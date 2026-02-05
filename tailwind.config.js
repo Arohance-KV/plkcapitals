@@ -18,6 +18,7 @@ export default {
       fontFamily: {
         serif: ['"Source Serif 4"', 'serif'],
         sans: ['Inter', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ variant = 'default' }) => {
 
                 {/* Text Content */}
                 <div ref={textRef} className="flex-1">
-                    <h1 className={`text-5xl md:text-7xl font-montserrat font-medium uppercase ${textColor} leading-snug mb-12 tracking-[0.05em]`}>
+                    <h1 className={`text-5xl md:text-7xl font-montserrat font-medium uppercase ${textColor} leading-none md:leading-snug mb-12 tracking-[0.05em]`}>
                         Helping your money <br />
                         stay aligned with <br />
                         your life<span className="text-plk-lima">.</span>

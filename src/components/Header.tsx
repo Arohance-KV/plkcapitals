@@ -33,11 +33,11 @@ export const Header: React.FC = () => {
             ref={headerRef}
             className={`fixed top-0 left-0 w-full z-50 opacity-0 transition-opacity ${navContainerClass}`}
         >
-            <div className="flex justify-start md:justify-between items-center max-w-7xl mx-auto px-4 md:px-12 py-4 gap-4 md:gap-0">
+            <div className="flex justify-start md:justify-between items-center max-w-7xl mx-auto px-4 md:px-12 py-8 md:py-4 gap-2 md:gap-0">
                 {/* Left: Logo */}
                 <div className="flex items-center">
                     <Link to="/">
-                        <img src={logoSrc} alt="PLK Capital" className="h-6 md:h-12 w-auto object-contain" />
+                        <img src={logoSrc} alt="PLK Capital" className="h-5 md:h-12 w-auto object-contain" />
                     </Link>
                 </div>
 

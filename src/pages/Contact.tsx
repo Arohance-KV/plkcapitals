@@ -10,26 +10,26 @@ export const Contact: React.FC = () => {
   useStagger(containerRef, ".contact-item", { delay: 0.2, y: 20 });
 
   return (
-    <main className="flex-grow bg-white text-[#0B1B2F] pb-20">
+    <main className="flex-grow bg-plk-white text-plk-navy pb-20">
       {/* Hero Section */}
-      <section className="w-full bg-[#0B1B2F] pt-52 pb-24 px-6 md:px-12 mb-0">
+      <section className="w-full bg-plk-navy font-montserrat font-medium uppercase  pt-52 pb-24 px-6 leading-snug tracking-[0.05em] md:px-12 mb-8">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-6xl md:text-8xl  text-white drop-shadow-sm">
-            Contact Us
+          <h1 className="text-6xl md:text-5xl  text-white drop-shadow-sm">
+            Contact Us<span className="text-plk-lima">.</span>
           </h1>
         </div>
       </section>
 
 
       {/* Content Section */}
-      <section ref={containerRef} className="max-w-7xl mx-auto px-6 md:px-12 opacity-0 pt-12 md:pt-20">
+      <section ref={containerRef} className="max-w-7xl mx-auto px-6 bg-plk-white md:px-12 opacity-0 pt-12 md:pt-20">
         <div className="flex flex-col md:flex-row gap-16 md:gap-32">
 
           {/* Left Column: Info */}
           <div className="w-full md:w-5/12 space-y-12">
             <div className="space-y-6 contact-item">
-              <h2 className="text-4xl md:text-5xl  text-[#0B1B2F]">Let's Chat</h2>
-              <p className="text-[#594D46] font-light leading-relaxed max-w-md">
+              <h2 className="text-4xl md:text-5xl  text-plk-navy">Let's Chat</h2>
+              <p className="text-plk-navy text-2xl md:text-2xl font-sans font-light leading-relaxed max-w-md">
                 Many of our clients begin with a simple conversation before deciding anything further.
               </p>
             </div>
@@ -37,12 +37,12 @@ export const Contact: React.FC = () => {
             <div className="space-y-8">
               {/* Address */}
               <div className="flex gap-4 contact-item">
-                <div className="mt-1 text-[#152E4D]">
+                <div className="mt-1 text-plk-navy">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 </div>
                 <div>
-                  <h4 className=" text-xl mb-1 text-[#0B1B2F]">Address</h4>
-                  <p className="text-[#594D46] font-light">
+                  <h4 className=" text-xl font-medium font-montserrat mb-1 text-plk-navy">Address</h4>
+                  <p className="text-plk-navy font-light font-sans">
                     <span className="font-medium block mb-1">PLK CAPITAL ADVISORS PRIVATE LIMITED</span>
                     #51, Pushpa Vatika, 1st Floor, C Flat,<br />
                     Vanivilas Road, Basavanagudi,<br />
@@ -53,34 +53,34 @@ export const Contact: React.FC = () => {
 
               {/* Contact */}
               <div className="flex gap-4 contact-item">
-                <div className="mt-1 text-[#152E4D]">
+                <div className="mt-1 text-plk-navy">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                 </div>
                 <div>
-                  <h4 className=" text-xl mb-1 text-[#0B1B2F]">Phone</h4>
-                  <p className="text-[#594D46] font-light">+91-9620050061</p>
+                  <h4 className=" text-xl font-medium font-montserrat mb-1 text-plk-navy">Phone</h4>
+                  <p className="font-sans font-light text-plk-navy/80">+91-9620050061</p>
                 </div>
               </div>
 
               {/* Email */}
               <div className="flex gap-4 contact-item">
-                <div className="mt-1 text-[#152E4D]">
+                <div className="mt-1 text-plk-navy">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </div>
                 <div>
-                  <h4 className=" text-xl mb-1 text-[#0B1B2F]">Email</h4>
-                  <p className="text-[#594D46] font-light">Plkcapital14@gmail.com</p>
+                  <h4 className=" text-xl font-medium font-montserrat mb-1 text-plk-navy">Email</h4>
+                  <p className="font-sans font-light text-plk-navy/80">Plkcapital14@gmail.com</p>
                 </div>
               </div>
 
               {/* CIN */}
               <div className="flex gap-4 contact-item">
-                <div className="mt-1 text-[#152E4D]">
+                <div className="mt-1 text-plk-navy">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
                 </div>
                 <div>
-                  <h4 className=" text-xl mb-1 text-[#0B1B2F]">CIN</h4>
-                  <p className="text-[#594D46] font-light">U66190KA2025PTC210648</p>
+                  <h4 className=" text-xl font-medium font-montserrat mb-1 text-plk-navy">CIN</h4>
+                  <p className="text-plk-navy/80 font-light">U66190KA2025PTC210648</p>
                 </div>
               </div>
             </div>
@@ -88,9 +88,9 @@ export const Contact: React.FC = () => {
 
           {/* Right Column: Form */}
           <div className="w-full md:w-7/12">
-            <div className="bg-white p-8 md:p-12 rounded-lg shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gray-100 contact-item">
+            <div className="bg-plk-white border-2 border-plk-navy/10 p-8 md:p-12 rounded-lg contact-item">
               <div className="mb-8">
-                <p className="text-[#0B1B2F] text-lg font-medium leading-relaxed">
+                <p className="text-plk-navy text-lg font-medium leading-relaxed">
 
                 </p>
               </div>
@@ -98,44 +98,44 @@ export const Contact: React.FC = () => {
               <form ref={formRef} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#0B1B2F]">Name <span className="text-red-500">*</span></label>
-                    <input type="text" placeholder="John Doe" required className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#152E4D] focus:ring-1 focus:ring-[#152E4D] transition-colors placeholder:text-gray-400 font-light" />
+                    <label className="block text-sm font-medium text-plk-navy">Name <span className="text-red-500">*</span></label>
+                    <input type="text" placeholder="John Doe" required className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light" />
                   </div>
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-[#0B1B2F]">Email <span className="text-red-500">*</span></label>
-                    <input type="email" placeholder="john@example.com" required className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#152E4D] focus:ring-1 focus:ring-[#152E4D] transition-colors placeholder:text-gray-400 font-light" />
+                    <label className="block text-sm font-medium text-plk-navy">Email <span className="text-red-500">*</span></label>
+                    <input type="email" placeholder="john@example.com" required className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-[#0B1B2F]">Phone <span className="text-red-500">*</span></label>
-                  <input type="tel" placeholder="+91 " required className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#152E4D] focus:ring-1 focus:ring-[#152E4D] transition-colors placeholder:text-gray-400 font-light" />
+                  <label className="block text-sm font-medium text-plk-navy">Phone <span className="text-red-500">*</span></label>
+                  <input type="tel" placeholder="+91 " required className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light" />
                 </div>
 
                 {/* Portfolio Review */}
                 <div className="space-y-3">
-                  <label className="block text-sm font-medium text-[#0B1B2F]">Would you like us to review your current portfolio during our conversation?</label>
+                  <label className="block text-sm font-medium text-plk-navy">Would you like us to review your current portfolio during our conversation?</label>
                   <div className="flex gap-6">
                     <label className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="portfolio_review" value="yes" className="accent-[#152E4D]" />
-                      <span className="text-[#594D46] font-light">Yes</span>
+                      <input type="radio" name="portfolio_review" value="yes" className="accent-plk-navy" />
+                      <span className="text-plk-navy/80 font-light">Yes</span>
                     </label>
                     <label className="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="portfolio_review" value="no" className="accent-[#152E4D]" />
-                      <span className="text-[#594D46] font-light">No</span>
+                      <input type="radio" name="portfolio_review" value="no" className="accent-plk-navy" />
+                      <span className="text-plk-navy/80 font-light">No</span>
                     </label>
                   </div>
                 </div>
 
                 {/* Optional Fields Header */}
-                <div className="pt-4 border-t border-gray-100">
-                  <span className="text-xs uppercase tracking-widest text-gray-400 font-semibold">Optional</span>
+                <div className="pt-4 border-t border-plk-navy/10">
+                  <span className="text-xs uppercase tracking-widest text-plk-navy/60 font-semibold">Optional</span>
                 </div>
 
                 {/* Journey */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-[#0B1B2F]">Where are you in your journey?</label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#152E4D] focus:ring-1 focus:ring-[#152E4D] transition-colors text-gray-600 font-light bg-white">
+                  <label className="block text-sm font-medium text-plk-navy">Where are you in your journey?</label>
+                  <select className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors text-plk-navy font-light">
                     <option value="" disabled selected>Select an option</option>
                     <option value="business_owner">Business Owner / Entrepreneur</option>
                     <option value="professional">Professional / Senior Executive</option>
@@ -148,8 +148,8 @@ export const Contact: React.FC = () => {
 
                 {/* Investable Assets */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-[#0B1B2F]">Approximate investable assets (Current Portfolio + Investable Cash)</label>
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#152E4D] focus:ring-1 focus:ring-[#152E4D] transition-colors text-gray-600 font-light bg-white">
+                  <label className="block text-sm font-medium text-plk-navy">Approximate investable assets (Current Portfolio + Investable Cash)</label>
+                  <select className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors text-plk-navy font-light">
                     <option value="" disabled selected>Select a range</option>
                     <option value="50L-2.5Cr">Rs 50L To Rs 2.5Cr</option>
                     <option value="2.5Cr-10Cr">Rs 2Cr To Rs 10Cr</option>
@@ -159,11 +159,11 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-[#0B1B2F]">Message</label>
-                  <textarea rows={5} placeholder="Anything specific you’d like us to discuss?" className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#152E4D] focus:ring-1 focus:ring-[#152E4D] transition-colors placeholder:text-gray-400 font-light resize-none"></textarea>
+                  <label className="block text-sm font-medium text-plk-navy">Message</label>
+                  <textarea rows={5} placeholder="Anything specific you’d like us to discuss?" className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light resize-none"></textarea>
                 </div>
 
-                <button type="submit" className="w-full bg-[#152E4D] text-white font-medium py-3 rounded-full hover:bg-[#0B1B2F] transition-colors duration-300 shadow-md">
+                <button type="submit" className="w-full bg-plk-navy text-plk-lima font-medium py-3 rounded-full hover:bg-plk-navy/90 transition-colors duration-300 shadow-md">
                   Send Message
                 </button>
               </form>

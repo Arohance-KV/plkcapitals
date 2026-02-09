@@ -33,7 +33,7 @@ export const MenuItem = ({
                 <Link to={href}>
                     <motion.p
                         transition={{ duration: 0.3 }}
-                        className={`cursor-pointer text-white hover:opacity-[0.9] ${className}`}
+                        className={cn("cursor-pointer text-white hover:opacity-[0.9]", className)}
                     >
                         {item}
                     </motion.p>
@@ -41,7 +41,7 @@ export const MenuItem = ({
             ) : (
                 <motion.p
                     transition={{ duration: 0.3 }}
-                    className={`cursor-pointer text-white hover:opacity-[0.9] ${className}`}
+                    className={cn("cursor-pointer text-white hover:opacity-[0.9]", className)}
                 >
                     {item}
                 </motion.p>
@@ -75,17 +75,21 @@ export const MenuItem = ({
     );
 };
 
+import { cn } from "../lib/utils";
+
 export const Menu = ({
     setActive,
     children,
+    className,
 }: {
     setActive: (item: string | null) => void;
     children: React.ReactNode;
+    className?: string;
 }) => {
     return (
         <nav
             onMouseLeave={() => setActive(null)} // resets the state
-            className="relative rounded-full border border-white/20 bg-plk-navy/50 backdrop-blur-sm shadow-input flex justify-center space-x-4 md:space-x-8 px-4 md:px-8 py-3 "
+            className={cn("md:relative rounded-full border border-white/20 bg-plk-navy/50 backdrop-blur-sm shadow-input flex justify-center space-x-4 md:space-x-8 px-4 md:px-8 py-3 ", className)}
         >
             {children}
         </nav>

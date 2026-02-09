@@ -20,25 +20,12 @@ export const LiquidityManagement: React.FC = () => {
     useReveal(section4Ref, { threshold: 0.2 });
     useStagger(section4Ref, ".lm-next-step", { y: 20, stagger: 0.1, delay: 0.1 });
 
-    // Section 2: "What This Is About" Animation
+    // Section 2: "What This Is About" Animation - Independent Triggers
     useEffect(() => {
         const el = section2Ref.current;
         if (!el) return;
 
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 70%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-
-            // Elements
-            const line1Words = el.querySelectorAll('#lm-s2-line1 .split-word');
-            const line2Words = el.querySelectorAll('#lm-s2-line2 .split-word');
-            const line3Words = el.querySelectorAll('#lm-s2-line3 .split-word');
-
             const animConfig = {
                 opacity: 1,
                 y: 0,
@@ -48,9 +35,37 @@ export const LiquidityManagement: React.FC = () => {
                 stagger: 0.05
             };
 
-            tl.to(line1Words, animConfig)
-                .to(line2Words, { ...animConfig, stagger: 0.03 }, ">0.5")
-                .to(line3Words, { ...animConfig, stagger: 0.03 }, ">0.5");
+            // Line 1
+            gsap.to(el.querySelectorAll('#lm-s2-line1 .split-word'), {
+                ...animConfig,
+                scrollTrigger: {
+                    trigger: '#lm-s2-line1',
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            // Line 2
+            gsap.to(el.querySelectorAll('#lm-s2-line2 .split-word'), {
+                ...animConfig,
+                duration: 1.2,
+                scrollTrigger: {
+                    trigger: '#lm-s2-line2',
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            // Line 3
+            gsap.to(el.querySelectorAll('#lm-s2-line3 .split-word'), {
+                ...animConfig,
+                duration: 1.2,
+                scrollTrigger: {
+                    trigger: '#lm-s2-line3',
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
 
         }, section2Ref);
         return () => ctx.revert();
@@ -78,7 +93,7 @@ export const LiquidityManagement: React.FC = () => {
                             start: "top 80%",
                             toggleActions: "play none none reverse"
                         },
-                        delay: i * 0.1
+                        delay: 0.1
                     }
                 );
             });
@@ -87,40 +102,40 @@ export const LiquidityManagement: React.FC = () => {
     }, []);
 
     return (
-        <main className="flex-grow bg-[#F7F2EF] text-[#0B1B2F] overflow-hidden pb-20">
+        <main className="flex-grow bg-[#F7F2EF] text-[#0B1B2F] overflow-hidden pb-0">
             {/* 1. Hero */}
             <section ref={section1Ref} className="w-full bg-plk-navy pt-52 pb-24 px-6 md:px-12 mb-0 opacity-0">
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight max-w-4xl">
-                        Liquidity Management for Businesses
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-medium uppercase text-white mb-8 leading-snug tracking-[0.05em] max-w-4xl">
+                        Liquidity Management for Businesses and Corporate<span className="text-plk-lima">.</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-white/80 font-light max-w-3xl leading-relaxed">
-                        Helping business owners manage surplus capital thoughtfully — while preserving safety, flexibility, and clarity.
+                    <p className="text-2xl md:text-2xl text-white/80 font-sans font-light max-w-3xl leading-relaxed">
+                        Helping business owners manage surplus capital thoughtfully while preserving safety, flexibility, and clarity.
                     </p>
                 </div>
             </section>
 
             {/* 2. What This Is About */}
-            <section ref={section2Ref} className="w-full bg-white py-32 mb-32">
+            <section ref={section2Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-12 opacity-60">
+                    <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-12 opacity-60">
                         WHAT THIS IS ABOUT
                     </div>
 
                     <div className="space-y-12">
                         <SplitText
                             id="lm-s2-line1"
-                            className="text-2xl md:text-3xl text-[#0B1B2F] leading-relaxed block"
+                            className="text-xl md:text-2xl text-plk-navy font-montserrat font-medium leading-relaxed block"
                             text="Business capital has a different role than personal wealth."
                         />
                         <SplitText
                             id="lm-s2-line2"
-                            className="text-xl md:text-2xl font-light text-[#594D46] leading-relaxed block"
+                            className="text-xl md:text-2xl font-montserrat font-medium text-plk-navy leading-relaxed block"
                             text="It needs to remain available, stable, and aligned with business cycles not locked away or exposed unnecessarily."
                         />
                         <SplitText
                             id="lm-s2-line3"
-                            className="text-xl md:text-2xl font-light text-[#594D46] leading-relaxed block"
+                            className="text-xl md:text-2xl font-montserrat font-medium text-plk-navy leading-relaxed block"
                             text="Our role is to help structure surplus capital decisions so funds are managed efficiently, while the business remains the priority."
                         />
                     </div>
@@ -128,89 +143,89 @@ export const LiquidityManagement: React.FC = () => {
             </section>
 
             {/* 3. How We Work With You */}
-            <section ref={section3Ref} className="max-w-4xl mx-auto px-6 md:px-12 mb-32">
-                <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-16 opacity-60">
-                    HOW WE WORK WITH YOU
-                </div>
-
-                <div className="space-y-24">
-
-                    {/* Step 1 */}
-                    <div className="work-section">
-                        <h3 className="text-2xl md:text-3xl text-[#0B1B2F] mb-6">We Begin by Understanding the Business</h3>
-                        <p className="text-lg text-[#594D46] font-light mb-6">Every engagement starts with understanding how your business operates. We spend time discussing:</p>
-                        <ul className="space-y-3 text-lg text-[#594D46] font-light list-disc pl-5 mb-6">
-                            <li>Cash-flow patterns and seasonality</li>
-                            <li>Working capital requirements</li>
-                            <li>Expected commitments and timelines</li>
-                            <li>How surplus funds are currently held</li>
-                        </ul>
-                        <p className="text-lg text-[#0B1B2F] font-medium">This helps us clearly separate core operating capital from surplus funds.</p>
+            <section ref={section3Ref} className="w-full bg-plk-white py-32">
+                <div className="max-w-4xl mx-auto px-6 md:px-12">
+                    <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6 opacity-60">
+                        HOW WE WORK WITH YOU
                     </div>
 
-                    {/* Step 2 */}
-                    <div className="work-section">
-                        <h3 className="text-2xl md:text-3xl  text-[#0B1B2F] mb-6">Surplus Funds Are Aligned With Commitment Timelines</h3>
-                        <p className="text-lg text-[#594D46] font-light mb-6">Rather than treating surplus funds as one pool, we focus on when the money is actually required. Surplus capital is aligned based on:</p>
-                        <ul className="space-y-3 text-lg text-[#594D46] font-light list-disc pl-5 mb-6">
-                            <li>Near-term commitments</li>
-                            <li>Medium-term business needs</li>
-                            <li>Longer-term surplus</li>
-                        </ul>
-                        <p className="text-lg text-[#594D46] font-light mb-4">This approach helps:</p>
-                        <ul className="space-y-3 text-lg text-[#594D46] font-light list-disc pl-5 mb-6">
-                            <li>Keep funds available when required</li>
-                            <li>Improve efficiency on idle capital</li>
-                            <li>Maintain safety and flexibility</li>
-                        </ul>
-                        <p className="text-lg text-[#0B1B2F] font-medium">The focus is on matching money to timelines, not chasing higher returns.</p>
-                    </div>
+                    <p className="text-xl md:text-2xl text-plk-navy font-sans font-light mb-16 leading-relaxed">
+                        A practical approach to managing surplus cash without compromising flexibility or continuity.
+                    </p>
 
-                    {/* Step 3 */}
-                    <div className="work-section">
-                        <h3 className="text-2xl md:text-3xl text-[#0B1B2F] mb-6">Liquidity Is Structured Thoughtfully</h3>
-                        <p className="text-lg text-[#594D46] font-light mb-6">Once timelines are clear, surplus capital is structured accordingly. This helps ensure:</p>
-                        <ul className="space-y-3 text-lg text-[#594D46] font-light list-disc pl-5 mb-6">
-                            <li>Core business liquidity remains untouched</li>
-                            <li>Surplus funds work more efficiently</li>
-                            <li>Money remains available when needed — without lock-ins or exit restrictions</li>
-                            <li>Costs are kept efficient to avoid unnecessary leakages</li>
-                        </ul>
-                        <p className="text-lg text-[#0B1B2F] font-medium">The intent is to achieve effective returns on surplus capital, without compromising business continuity.</p>
-                    </div>
+                    <div className="space-y-24">
 
-                    {/* Step 4 */}
-                    <div className="work-section">
-                        <h3 className="text-2xl md:text-3xl  text-[#0B1B2F] mb-6">Ongoing Guidance as Business Needs Change</h3>
-                        <p className="text-lg text-[#594D46] font-light mb-6">Businesses evolve, and liquidity needs change over time. We:</p>
-                        <ul className="space-y-3 text-lg text-[#594D46] font-light list-disc pl-5 mb-6">
-                            <li>Review liquidity structures periodically</li>
-                            <li>Adjust as cash flows, commitments, or plans change</li>
-                            <li>Provide clarity during uncertain business environments</li>
-                        </ul>
-                        <p className="text-lg text-[#0B1B2F] font-medium">This ensures liquidity decisions continue to support the business, rather than distract from it.</p>
-                    </div>
+                        {/* Phase 1 */}
+                        <div className="work-section">
+                            <h3 className="text-2xl md:text-3xl text-plk-navy mb-6 font-montserrat font-medium">Phase 1: Understanding How Your Business Uses Cash</h3>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light mb-6 ">We start by understanding how money moves through your business:</p>
+                            <ul className="space-y-3 text-2xl md:text-2xl text-plk-navy font-sans font-light list-disc pl-5 mb-6 ">
+                                <li>Cash-flow patterns and seasonality</li>
+                                <li>Working capital requirements</li>
+                                <li>Expected commitments and timelines</li>
+                                <li>How surplus funds are currently held</li>
+                            </ul>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light">This allows us to clearly separate operating capital from true surplus funds.</p>
+                        </div>
 
+                        {/* Phase 2 */}
+                        <div className="work-section">
+                            <h3 className="text-2xl md:text-3xl text-plk-navy mb-6 font-montserrat font-medium">Phase 2: Aligning Surplus Funds With Timelines</h3>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light mb-6 ">Rather than treating surplus cash as one pool, we focus on when the money is actually needed.</p>
+                            <ul className="space-y-3 text-2xl md:text-2xl text-plk-navy font-sans font-light list-disc pl-5 mb-6 ">
+                                <li>Near-term commitments</li>
+                                <li>Medium-term business needs</li>
+                                <li>Longer-term surplus</li>
+                            </ul>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light">This keeps money available when required, improves efficiency on idle capital, and maintains safety and flexibility.</p>
+                        </div>
+
+                        {/* Phase 3 */}
+                        <div className="work-section">
+                            <h3 className="text-2xl md:text-3xl text-plk-navy mb-6 font-montserrat font-medium">Phase 3: Structuring Liquidity Thoughtfully</h3>
+                            <ul className="space-y-3 text-2xl md:text-2xl text-plk-navy font-sans font-light list-disc pl-5 mb-6 ">
+                                <li>Core business liquidity remains untouched</li>
+                                <li>Surplus funds work more efficiently</li>
+                                <li>Money remains available when needed without lock-ins or exit restrictions</li>
+                                <li>Costs are kept efficient to avoid unnecessary leakages</li>
+                            </ul>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light">The objective is effective returns on surplus capital, without compromising business continuity.</p>
+                        </div>
+
+                        {/* Phase 4 */}
+                        <div className="work-section">
+                            <h3 className="text-2xl md:text-3xl text-plk-navy mb-6 font-montserrat font-medium">Phase 4: Ongoing Guidance as Business Needs Change</h3>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light mb-6 ">Businesses evolve, and liquidity needs change over time.</p>
+                            <ul className="space-y-3 text-2xl md:text-2xl text-plk-navy font-sans font-light list-disc pl-5 mb-6 ">
+                                <li>Review liquidity structures periodically</li>
+                                <li>Adjust as cash flows, commitments, or plans change</li>
+                                <li>Provide clarity during uncertain business environments</li>
+                            </ul>
+                            <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light">This ensures liquidity decisions continue to support the business, rather than distract from it.</p>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
             {/* 4. Natural Next Step */}
-            <section ref={section4Ref} className="w-full bg-[#FAF9F6] py-32">
+            <section ref={section4Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-                    <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-8 opacity-60">
+                    <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-8 opacity-60">
                         NATURAL NEXT STEP
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl  text-[#0B1B2F] mb-12 leading-tight opacity-0 translate-y-4 lm-next-step">
+                    <h2 className="text-3xl md:text-4xl text-plk-navy font-montserrat font-medium mb-12 leading-tight opacity-0 translate-y-4 lm-next-step">
                         Let’s review how your surplus capital is currently structured.
                     </h2>
 
-                    <div className="opacity-0 translate-y-4 lm-next-step">
-                        <a href="/contact" className="inline-block bg-[#0B1B2F] text-white text-lg px-8 py-4 rounded-sm hover:bg-[#152E4D] transition-colors duration-300">
+                    <div className="mt-8 reveal-item">
+                        <a href="/contact" className="inline-block bg-plk-lima font-montserrat font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-sm hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
                             Schedule a Conversation
                         </a>
                     </div>
                 </div>
+
             </section>
 
         </main>

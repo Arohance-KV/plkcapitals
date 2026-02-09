@@ -4,6 +4,7 @@ import menuIcon from '../assets/icons/menu.png';
 import chartIcon from '../assets/icons/chart.png';
 import walletCheckIcon from '../assets/icons/wallet-check.png';
 import judgeIcon from '../assets/icons/judge.png';
+import legacyIcon from '../assets/icons/legacy.svg';
 
 interface HowWeWorkProps {
     variant?: 'default' | 'light';
@@ -22,13 +23,13 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
     useStagger(gridRef, ".card-item", { y: 30, stagger: 0.1, delay: 0.2 });
     useReveal(quoteRef, { y: 20, delay: 0.5 });
 
-    // Styles
-    const sectionBg = isLight ? 'bg-[#F7F2EF]' : 'bg-plk-navy';
-    const textColor = isLight ? 'text-[#152E4D]' : 'text-white';
-    const subTextColor = isLight ? 'text-[#152E4D]/80' : 'text-plk-grey';
-    const borderColor = isLight ? 'border-black' : 'border-white/10';
-    const separatorColor = isLight ? 'via-black' : 'via-white';
-    const imageClass = isLight ? 'w-12 h-12 filter invert' : 'w-12 h-12';
+    const sectionBg = 'bg-plk-white';
+    const textColor = 'text-plk-navy';
+    const subTextColor = 'text-plk-navy';
+    const borderColor = 'border-plk-navy';
+    const separatorColor = 'via-plk-navy';
+
+    const imageClass = 'w-12 h-12 filter brightness-0 invert-[.08] sepia-[.34] saturate-[3018%] hue-rotate-[193deg] brightness-96 contrast-92';
 
     const workItems = [
         {
@@ -54,7 +55,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
         {
             title: "Retirees & Legacy Planners",
             desc: "Prioritising regular cash flows, capital stability, and peace of mind—while planning for intergenerational wealth transfer and purposeful giving.",
-            icon: menuIcon // Reusing icon
+            icon: legacyIcon
         }
     ];
 
@@ -70,7 +71,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
                     <h2 className={`text-4xl md:text-5xl ${textColor} mb-6`}>
                         Who We Work With
                     </h2>
-                    <p className={`${subTextColor} font-light text-lg`}>
+                    <p className={`${subTextColor} font-sans font-light text-2xl`}>
                         Tailored guidance for every stage of your financial journey
                     </p>
                 </div>
@@ -115,7 +116,7 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
 
                 {/* Footer Quote */}
                 <div ref={quoteRef} className="text-center mt-20 max-w-4xl mx-auto opacity-0">
-                    <p className={`text-2xl md:text-3xl ${textColor} leading-normal`}>
+                    <p className={`text-2xl md:text-3xl ${textColor} font-montserrat font-medium leading-normal`}>
                         While life stages differ, our role remains the same providing clarity, discipline, and steady guidance through changing needs.
                     </p>
                 </div>

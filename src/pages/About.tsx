@@ -219,7 +219,7 @@ export const About: React.FC = () => {
   }, []);
 
   return (
-    <main className="flex-grow bg-[#F7F2EF] text-[#0B1B2F] overflow-hidden">
+    <main className="flex-grow bg-plk-white text-[#0B1B2F] overflow-hidden">
 
       <AboutHero />
 
@@ -236,34 +236,44 @@ export const About: React.FC = () => {
         </div>
 
         {/* Quote */}
-        <div className="w-full md:w-2/3 flex flex-col items-center md:items-start space-y-8">
-          <blockquote className="text-xl md:text-3xl leading-relaxed text-[#594D46] text-center md:text-left">
-            “Clients trust us with decisions that affect their families, their businesses, and their future.
+        <div className="w-full md:w-2/3 flex flex-col items-center md:items-start space-y-8 relative">
+
+          {/* Decorative Quotes */}
+          <span className="absolute -top-12 -left-4 md:-top-16 md:-left-16 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
+            &ldquo;
+          </span>
+
+          <blockquote className="relative z-10 text-xl md:text-3xl leading-relaxed text-plk-navy font-montserrat font-medium text-center md:text-left">
+            Clients trust us with decisions that affect their families, their businesses, and their future.
             <br className="hidden md:block" />
             <br className="hidden md:block" />
             <span className="md:hidden"><br /></span>
-            Our responsibility is to act in their best interest clearly, independently, and without conflict.”
+            Our responsibility is to act in their best interest clearly, independently, and without conflict.
           </blockquote>
+
+          <span className="absolute -bottom-20 right-0 md:-bottom-24 md:-right-8 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
+            &rdquo;
+          </span>
 
           <div className="w-16 h-[1px] bg-[#0B1B2F]/20 md:hidden"></div>
 
-          <div className="text-[#594D46] font-light tracking-wide text-sm md:text-base uppercase">
-            <span className="font-semibold text-[#0B1B2F]">Mehul Jain</span>, CFA — Founder
+          <div className="text-plk-navy font-montserrat font-medium tracking-wide text-sm md:text-base uppercase">
+            <span className="font-semibold text-plk-navy">Mehul Jain, CFA — Founder</span>
           </div>
         </div>
       </section>
 
       {/* Section 2: Our Belief (Refactored) */}
-      <section ref={startRef} className="w-full bg-[#FAF9F6] py-32 mb-32">
+      <section ref={startRef} className="w-full bg-plk-white py-32 mb-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="max-w-4xl flex flex-col items-start text-left space-y-6 md:space-y-8">
 
             {/* STEP 1: Main Anchor */}
             <div className="space-y-4">
-              <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-6 opacity-60">Our Belief</div>
+              <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6 opacity-60">Our Belief</div>
               <SplitText
                 id="belief-step-1"
-                className="text-3xl md:text-4xl lg:text-5xl text-[#0B1B2F] leading-tight"
+                className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium leading-tight"
                 text="We believe wealth management works best when advice is independent and aligned with the client."
               />
             </div>
@@ -272,7 +282,7 @@ export const About: React.FC = () => {
             <div className="w-full">
               <SplitText
                 id="belief-step-2"
-                className="text-lg md:text-xl font-light text-[#594D46] leading-relaxed"
+                className="text-lg md:text-xl text-plk-navy font-montserrat font-medium leading-relaxed"
                 text="Money decisions are deeply personal. They affect families, responsibilities, and peace of mind not just returns."
               />
             </div>
@@ -285,7 +295,7 @@ export const About: React.FC = () => {
                 "Discipline over excitement",
                 "Guidance through all market conditions"
               ].map((item, i) => (
-                <div key={i} className="belief-step-3-item text-xl md:text-2xl text-[#0B1B2F] opacity-0 translate-y-4">
+                <div key={i} className="belief-step-3-item text-xl md:text-2xl text-plk-navy font-montserrat font-medium opacity-0 translate-y-4">
                   {item}
                 </div>
               ))}
@@ -295,7 +305,7 @@ export const About: React.FC = () => {
             <div className="max-w-2xl bg-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F] shadow-sm">
               <SplitText
                 id="belief-step-4"
-                className="text-lg md:text-xl font-light text-[#0B1B2F] italic leading-relaxed"
+                className="text-lg md:text-xl text-plk-navy font-montserrat font-medium leading-relaxed"
                 text="Our role is not to predict markets, but to help clients make better decisions consistently especially when it matters most."
               />
             </div>
@@ -305,37 +315,37 @@ export const About: React.FC = () => {
       </section>
 
       {/* Section 3: Fee-Only*/}
-      <section ref={section3Ref} className="w-full max-w-6xl mx-auto px-6 md:px-12 mb-32">
+      <section ref={section3Ref} className="w-full  max-w-6xl mx-auto px-6 md:px-12 mb-32">
         <div className="max-w-3xl flex flex-col items-start text-left space-y-6 md:space-y-8">
 
-          <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-2 opacity-60">
+          <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2 opacity-60">
             WHY WE ARE FEE-ONLY
           </div>
 
           {/* Anchor */}
           <SplitText
             id="fee-anchor"
-            className="text-2xl md:text-3xl lg:text-4xl text-[#0B1B2F] leading-tight"
+            className="text-2xl md:text-3xl lg:text-4xl text-plk-navy font-montserrat font-medium leading-tight"
             text="We work as a fiduciary legally and ethically required to act in our clients’ best interest."
           />
 
           {/* Body */}
           <SplitText
             id="fee-body"
-            className="text-lg md:text-xl font-light text-[#594D46] leading-relaxed"
+            className="text-2xl md:text-2xl text-plk-navy font-sans font-light leading-relaxed"
             text="In simple terms, this means our advice is driven only by what is right for you not by commissions, targets, or product incentives."
           />
 
           {/* Statement */}
           <SplitText
             id="fee-statement"
-            className="text-xl md:text-2xl font-medium text-[#0B1B2F]"
+            className="text-xl md:text-2xl font-medium text-plk-navy font-montserrat"
             text="We are paid only by our clients."
           />
 
           {/* Practice List */}
-          <div className="w-full bg-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F]/20 shadow-sm mt-4">
-            <h3 id="fee-practice-header" className="text-lg  text-[#0B1B2F] mb-6 opacity-0 translate-y-4">
+          <div className="w-full bg-plk-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F]/20 shadow-sm mt-4">
+            <h3 id="fee-practice-header" className="text-2xl text-plk-navy font-sans font-light mb-6 opacity-0 translate-y-4">
               What this means in practice
             </h3>
             <ul className="space-y-4">
@@ -347,7 +357,7 @@ export const About: React.FC = () => {
               ].map((item, i) => (
                 <li key={i} className="fee-practice-item flex items-center space-x-3 opacity-0 -translate-x-4">
                   <span className="w-1.5 h-1.5 bg-[#0B1B2F] rounded-full"></span>
-                  <span className="text-lg text-[#594D46] font-light">{item}</span>
+                  <span className="text-2xl text-plk-navy font-sans font-light">{item}</span>
                 </li>
               ))}
 
@@ -355,7 +365,7 @@ export const About: React.FC = () => {
               <li className="pt-4 mt-4 border-t border-[#0B1B2F]/10">
                 <SplitText
                   id="fee-last-item"
-                  className="text-lg text-[#0B1B2F] font-medium italic"
+                  className="text-2xl text-plk-navy font-sans font-light"
                   text="If we ever believe something is not right for you, we will say no even if it means we earn less."
                 />
               </li>
@@ -366,24 +376,24 @@ export const About: React.FC = () => {
       </section>
 
       {/* Section 4: How We Think About Money */}
-      <section id="how-we-think" ref={section4Ref} className="w-full bg-[#FAF9F6] py-32 mb-32">
+      <section id="how-we-think" ref={section4Ref} className="w-full bg-plk-white py-32 mb-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
           <div className="max-w-3xl flex flex-col items-start text-left space-y-16">
 
             <div className="space-y-6">
-              <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-2 opacity-60">
+              <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2 opacity-60">
                 HOW WE THINK ABOUT MONEY
               </div>
 
               <SplitText
                 id="think-intro"
-                className="text-2xl md:text-3xl lg:text-4xl text-[#0B1B2F] leading-tight"
+                className="text-2xl md:text-3xl lg:text-4xl text-plk-navy font-montserrat font-medium leading-tight"
                 text="We believe long-term outcomes are shaped more by how decisions are made than by trying to predict what markets will do next."
               />
             </div>
 
             <div className="space-y-12 w-full">
-              <h3 id="think-subheader" className="text-lg md:text-xl font-light text-[#594D46] opacity-0">
+              <h3 id="think-subheader" className="text-2xl md:text-2xl text-plk-navy font-sans font-light opacity-0">
                 Our approach is built on a few simple principles:
               </h3>
 
@@ -411,8 +421,8 @@ export const About: React.FC = () => {
                   }
                 ].map((item, i) => (
                   <div key={i} className="think-item flex flex-col space-y-2 opacity-0 translate-y-4">
-                    <h4 className="text-xl md:text-2xl text-[#0B1B2F]">{item.title}</h4>
-                    <p className="text-lg text-[#594D46] font-light leading-relaxed max-w-2xl">{item.desc}</p>
+                    <h4 className="text-xl md:text-2xl text-plk-navy font-montserrat font-medium">{item.title}</h4>
+                    <p className="text-2xl text-plk-navy font-sans font-light leading-relaxed max-w-2xl">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -424,24 +434,24 @@ export const About: React.FC = () => {
       <HowWeWork variant="light" />
 
       {/* Section 5: Let's Chat */}
-      <section ref={chatRef} className="w-full bg-white py-32">
+      <section ref={chatRef} className="w-full bg-plk-white py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-          <div className="text-sm font-semibold tracking-widest text-[#0B1B2F] uppercase mb-8 opacity-60">
+          <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-8 opacity-60">
             LET’S CHAT
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-[#0B1B2F] mb-8 leading-tight opacity-0 translate-y-4 reveal-item">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium mb-8 leading-tight opacity-0 translate-y-4 reveal-item">
             A conversation is often the best place to begin.
           </h2>
 
-          <p className="text-lg md:text-xl text-[#594D46] font-light leading-relaxed mb-12 opacity-0 translate-y-4 reveal-item">
+          <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light leading-relaxed mb-12 opacity-0 translate-y-4 reveal-item">
             We usually start by listening understanding your priorities, responsibilities, and what you’re looking to achieve.
             <br /><br />
             If it feels right, we take the next steps together.
           </p>
 
-          <div className="opacity-0 translate-y-4 reveal-item">
-            <a href="/contact" className="inline-block bg-[#0B1B2F] text-white text-lg px-8 py-4 rounded-sm hover:bg-[#152E4D] transition-colors duration-300">
+          <div className="mt-8 reveal-item">
+            <a href="/contact" className="inline-block bg-plk-lima font-montserrat font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-sm hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
               Schedule a Conversation
             </a>
           </div>

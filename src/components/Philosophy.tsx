@@ -21,33 +21,50 @@ export const Philosophy: React.FC<PhilosophyProps> = ({ variant = 'default' }) =
         if (!section) return;
 
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline({
+            // Line 1
+            gsap.to(section.querySelectorAll('#line-1 .split-word'), {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                duration: 1.5,
+                stagger: 0.08,
+                ease: "power3.out",
                 scrollTrigger: {
-                    trigger: section,
-                    start: "top 70%", // Start earlier to give time for the sequence
+                    trigger: '#line-1',
+                    start: "top 80%",
                     toggleActions: "play none none reverse"
                 }
             });
 
-            // Select words by their container ID to ensure correct grouping
-            const line1Words = section.querySelectorAll('#line-1 .split-word');
-            const line2Words = section.querySelectorAll('#line-2 .split-word');
-            const line3Words = section.querySelectorAll('#line-3 .split-word');
-
-            // Animation configuration
-            const animConfig = {
+            // Line 2
+            gsap.to(section.querySelectorAll('#line-2 .split-word'), {
                 opacity: 1,
                 y: 0,
                 filter: "blur(0px)",
-                duration: 2, // Slow duration from previous step
+                duration: 1.5,
+                stagger: 0.08,
                 ease: "power3.out",
-                stagger: 0.2 // Slow stagger from previous step
-            };
+                scrollTrigger: {
+                    trigger: '#line-2',
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
 
-            // STRICT SEQUENCE
-            tl.to(line1Words, animConfig)
-                .to(line2Words, animConfig, ">") // ">" means start immediately after previous finishes
-                .to(line3Words, animConfig, ">");
+            // Line 3
+            gsap.to(section.querySelectorAll('#line-3 .split-word'), {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                duration: 1.5,
+                stagger: 0.08,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: '#line-3',
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
 
         }, sectionRef);
 
@@ -55,23 +72,23 @@ export const Philosophy: React.FC<PhilosophyProps> = ({ variant = 'default' }) =
     }, []);
 
     return (
-        <section ref={sectionRef} className={`w-full py-20 ${isLight ? 'bg-[#F7F2EF]' : ''}`}>
+        <section ref={sectionRef} className={`w-full py-20 ${isLight ? 'bg-plk-white' : ''}`}>
             <div className="max-w-4xl mx-auto px-4 md:px-12 text-center space-y-12">
                 <SplitText
                     id="line-1"
-                    className={`text-2xl md:text-3xl font-thin ${textColor} leading-relaxed`}
+                    className={`text-2xl md:text-3xl font-montserrat font-medium ${textColor} leading-relaxed`}
                     text="Money decisions are rarely just about numbers."
                 />
 
                 <SplitText
                     id="line-2"
-                    className={`text-2xl md:text-3xl font-thin ${textColor} leading-relaxed`}
+                    className={`text-2xl md:text-3xl font-montserrat font-medium ${textColor} leading-relaxed`}
                     text="They are shaped by responsibilities, future commitments, cash flows, and uncertainty."
                 />
 
                 <SplitText
                     id="line-3"
-                    className={`text-2xl md:text-3xl font-thin ${textColor} leading-relaxed`}
+                    className={`text-2xl md:text-3xl font-montserrat font-medium ${textColor} leading-relaxed`}
                     text="Our role is to bring structure and clarity so your wealth quietly supports your life, allowing you to focus on other important things."
                 />
             </div>

@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 
 export const Footer: React.FC = () => {
     return (
-        <footer className="bg-[#0E293C] text-white pt-20 pb-10">
+        <footer className="bg-plk-navy text-white pt-20 pb-10 font-sans font-light">
             <div className="max-w-7xl mx-auto px-4 md:px-12">
 
                 {/* Main Content Grid */}
@@ -12,18 +12,18 @@ export const Footer: React.FC = () => {
                     {/* Part A: Company Info */}
                     <div className="space-y-6">
                         <img src={logo} alt="PLK Capital" className="h-10 md:h-12 object-contain mb-2" />
-                        <div className="text-gray-400 text-sm font-light space-y-2 leading-relaxed">
-                            <p><strong className="text-white">Company Name:</strong> PLK CAPITAL ADVISORS PRIVATE LIMITED</p>
-                            <p><strong className="text-white">CIN:</strong> U66190KA2025PTC210648</p>
-                            <p><strong className="text-white">SEBI RIA:</strong> -</p>
-                            <p><strong className="text-white">SEBI RA:</strong> -</p>
+                        <div className="text-gray-400 text-sm font-sans font-light space-y-2 leading-relaxed">
+                            <p><strong className="text-plk-white font-montserrat font-medium">Company Name:</strong> PLK CAPITAL ADVISORS PRIVATE LIMITED</p>
+                            <p><strong className="text-plk-white font-montserrat font-medium">CIN:</strong> U66190KA2025PTC210648</p>
+                            <p><strong className="text-plk-white font-montserrat font-medium">SEBI RIA:</strong> -</p>
+                            <p><strong className="text-plk-white font-montserrat font-medium">SEBI RA:</strong> -</p>
                         </div>
                     </div>
 
                     {/* Center: Links */}
                     <div className="md:px-4 lg:mx-auto">
-                        <h4 className="font-bold text-lg mb-6">Quick Links</h4>
-                        <ul className="space-y-3 text-gray-400 font-light text-sm">
+                        <h4 className="text-lg mb-6 text-plk-white font-montserrat font-medium">Quick Links</h4>
+                        <ul className="space-y-3 text-gray-400 font-sans font-light text-sm">
                             <li><a href="#" className="hover:text-white transition-colors">Disclaimer</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Regulatory Disclosure</a></li>
@@ -35,31 +35,31 @@ export const Footer: React.FC = () => {
 
                     {/* Part B: Contact Info */}
                     <div className="space-y-6 lg:justify-self-end">
-                        <h4 className="font-bold text-lg mb-6">Contact Us</h4>
-                        <div className="text-gray-400 text-sm font-light space-y-3 leading-relaxed">
+                        <h4 className="text-lg mb-6 text-plk-white font-montserrat font-medium">Contact Us</h4>
+                        <div className="text-gray-400 text-sm font-sans font-light space-y-3 leading-relaxed">
                             <p>
-                                <strong className="text-white block mb-1">Email:</strong>
+                                <strong className="text-plk-white font-montserrat font-medium block mb-1">Email:</strong>
                                 Plkcapital14@gmail.com
                             </p>
                             <p>
-                                <strong className="text-white block mb-1">Number:</strong>
+                                <strong className="text-plk-white font-montserrat font-medium block mb-1">Number:</strong>
                                 +91-9620050061
                             </p>
                             <p>
-                                <strong className="text-white block mb-1">Address:</strong>
+                                <strong className="text-plk-white font-montserrat font-medium block mb-1">Address:</strong>
                                 #51, Pushpa Vatika, 1st Floor, C Flat,<br />
                                 Vanivilas Road, Basavanagudi,<br />
                                 Bangalore- 560004, Karnataka
                             </p>
                             <div className="pt-2 space-y-2">
                                 <p>
-                                    <strong className="text-white">Grievance Cell:</strong>{" "}
+                                    <strong className="text-plk-white font-montserrat font-medium">Grievance Cell:</strong>{" "}
                                     <a href="https://scores.sebi.gov.in/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
                                         https://scores.sebi.gov.in/
                                     </a>
                                 </p>
                                 <p>
-                                    <strong className="text-white">SMARTODR:</strong>{" "}
+                                    <strong className="text-plk-white font-montserrat font-medium">SMARTODR:</strong>{" "}
                                     <a href="https://smartodr.in/login" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
                                         https://smartodr.in/login
                                     </a>
@@ -71,7 +71,7 @@ export const Footer: React.FC = () => {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-light">
+                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-sans font-light">
                     <div className="mb-4 md:mb-0">
                         Copyright @2026 PLK Capital
                     </div>

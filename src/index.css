@@ -2,27 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Local Font Imports - Using static font files for better compatibility */
+
+/* Montserrat Regular (400) */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat Medium (500) */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat SemiBold (600) */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat/static/Montserrat-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Montserrat Bold (700) */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./fonts/Montserrat/static/Montserrat-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/Josefin_Sans/Josefin_Sans/JosefinSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('./fonts/Josefin_Sans/Josefin_Sans/JosefinSans-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 700;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   body {
-    @apply bg-plk-navy text-plk-white font-sans antialiased font-light;
-    /* Inter 300 is light */
+    @apply bg-plk-navy text-plk-white antialiased;
+    font-family: 'Josefin Sans';
+    font-weight: 300;
   }
 
+  /* Force paragraphs to use Josefin Sans Light (300) */
+  p {
+    font-family: 'Josefin Sans';
+    font-weight: 300;
+  }
+
+  /* Headings use Montserrat Medium (500) */
   h1,
   h2,
-  h3 {
-    @apply font-montserrat font-bold;
-  }
-
+  h3,
   h4,
   h5,
   h6 {
-    @apply font-serif font-medium;
-    /* Source Serif 4 500 is medium */
+    font-family: 'Montserrat';
+    font-weight: 500;
   }
-}
-
-/* Custom utilities if needed */
-.text-balance {
-  text-wrap: balance;
 }

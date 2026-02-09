@@ -18,9 +18,9 @@ export const Hero: React.FC<HeroProps> = ({ variant = 'default' }) => {
     // Reveal the whole container slightly
     useReveal(containerRef, { y: 20, duration: 1.2, delay: 0.2 });
 
-    const textColor = isLight ? 'text-[#0E293C]' : 'text-white';
-    const subTextColor = isLight ? 'text-[#0E293C]/80' : 'text-white/80';
-    const dividerColor = isLight ? 'bg-[#0E293C]/20' : 'bg-white/20';
+    const textColor = isLight ? 'text-[#0E293C]' : 'text-plk-white';
+    const subTextColor = isLight ? 'text-[#0E293C]/80' : 'text-plk-white';
+    const dividerColor = isLight ? 'bg-[#0E293C]/20' : 'bg-plk-white';
 
     return (
         <section ref={containerRef} className="px-4 md:px-12 pt-40 pb-20 w-full opacity-0 min-h-screen flex flex-col justify-center">
@@ -28,12 +28,12 @@ export const Hero: React.FC<HeroProps> = ({ variant = 'default' }) => {
 
                 {/* Text Content */}
                 <div ref={textRef} className="flex-1">
-                    <h1 className={`text-5xl md:text-7xl ${textColor} leading-[1.1] mb-12 tracking-tight`}>
+                    <h1 className={`text-5xl md:text-7xl font-montserrat font-medium uppercase ${textColor} leading-snug mb-12 tracking-[0.05em]`}>
                         Helping your money <br />
                         stay aligned with <br />
-                        your life.
+                        your life<span className="text-plk-lima">.</span>
                     </h1>
-                    <p className={`${subTextColor} text-xl md:text-2xl font-light max-w-2xl leading-relaxed`}>
+                    <p className={`${subTextColor} text-xl md:text-2xl font-sans font-light max-w-2xl leading-relaxed`}>
                         Thoughtful financial guidance for individuals, families, and business owners built on clarity, independence, and long-term thinking.
                     </p>
                 </div>

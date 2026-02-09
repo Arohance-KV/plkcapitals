@@ -29,10 +29,10 @@ export const AboutUs: React.FC<AboutUsProps> = ({ variant = 'default' }) => {
     useHover(btn2Ref, { scale: 1.05 });
 
     const textColor = isLight ? 'text-[#0E293C]' : 'text-white';
-    const subTextColor = isLight ? 'text-[#0E293C]/80' : 'text-plk-grey';
-    const buttonBg = isLight ? 'bg-[#0E293C]' : 'bg-[#112240]';
+    const subTextColor = isLight ? 'text-plk-white' : 'text-plk-white';
+    const buttonBg = isLight ? 'bg-plk-lima' : 'bg-plk-lima';
     const buttonBorder = isLight ? 'border-[#0E293C]' : 'border-[#1E3A5F]';
-    const buttonText = isLight ? 'text-white' : 'text-plk-lima';
+    const buttonText = isLight ? 'text-white' : 'text-plk-navy';
     const buttonHoverBg = isLight ? 'hover:bg-[#152E4D]' : 'hover:bg-[#1E3A5F]';
     const buttonHoverText = isLight ? 'hover:text-white' : 'hover:text-white';
 
@@ -40,18 +40,20 @@ export const AboutUs: React.FC<AboutUsProps> = ({ variant = 'default' }) => {
         <section className="py-24">
             {/* Top Section */}
             <div ref={topSectionRef} className="max-w-7xl mx-auto px-4 md:px-12 text-left mb-20">
-                <h2 className={`text-4xl md:text-6xl ${textColor} mb-6 leading-tight`}>
-                    Financial peace of mind.
+                <h2 className={`text-3xl md:text-4xl lg:text-6xl font-montserrat font-medium ${textColor} mb-6 leading-tight`}>
+                    Financial peace of mind<span className="text-plk-lima">.</span>
                 </h2>
-                <p className={`text-xl md:text-2xl ${subTextColor} font-light mb-12`}>
+                <p className={`text-2xl md:text-2xl ${subTextColor} font-sans font-light mb-12`}>
                     Something worth building patiently over time.
                 </p>
                 <div className="flex justify-start">
-                    <a href="/contact" ref={btn1Ref} className={`${buttonBg} ${buttonText} border ${buttonBorder} px-8 py-3 rounded-md text-lg ${buttonHoverBg} ${buttonHoverText} transition-all duration-300 inline-block`}>
-                        Schedule a Conversation
-                    </a>
+                    <div className="reveal-item">
+                        <a href="/contact" className="inline-block bg-plk-lima font-montserrat font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-sm hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
+                            Schedule a Conversation
+                        </a>
+                    </div>
                 </div>
-                <p className={`text-xl md:text-2xl ${subTextColor} font-light mt-8`}>
+                <p className={`text-2xl md:text-2xl ${subTextColor} font-sans font-light mt-8`}>
                     Many of our clients begin with a simple conversation before deciding anything further.
                 </p>
             </div>

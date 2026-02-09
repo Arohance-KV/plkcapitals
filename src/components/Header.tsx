@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLoadReveal, useHeaderScroll } from '../hooks/useGsap';
 import gsap from 'gsap';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo2.png';
 
 import { Menu, MenuItem, HoveredLink } from '../ui/navbar-menu';
 
@@ -10,7 +10,11 @@ export const Header: React.FC = () => {
     const location = useLocation();
 
     const [active, setActive] = useState<string | null>(null);
-    const isLightPage = location.pathname === '/about' || location.pathname === '/';
+    const isLightPage = location.pathname === '/about' ||
+        location.pathname === '/wealth-management' ||
+        location.pathname === '/liquidity-management' ||
+        location.pathname === '/contact' ||
+        location.pathname === '/';
     const headerRef = useRef<HTMLElement>(null);
 
     useLoadReveal(headerRef, { y: -20, duration: 1, delay: 0.2 });
@@ -18,27 +22,30 @@ export const Header: React.FC = () => {
 
     // Styles based on page context
     const navContainerClass = isLightPage
-        ? "border border-[#0B1B2F]/20 bg-[#F7F2EF]/80 backdrop-blur-sm"
+        ? "border border-[#0B1B2F]/20 bg-plk-white/80 backdrop-blur-sm"
         : "border border-white/20 bg-plk-navy/50 backdrop-blur-sm";
 
     const textColor = isLightPage ? "text-[#0B1B2F]" : "text-plk-white";
     const logoSrc = logo;
 
     return (
-        <header ref={headerRef} className="fixed top-0 left-0 w-full py-4 md:py-6 px-4 md:px-12 z-50 opacity-0 transition-opacity">
-            <div className="flex flex-col md:grid md:grid-cols-3 items-center max-w-7xl mx-auto gap-4 md:gap-0">
+        <header
+            ref={headerRef}
+            className={`fixed top-0 left-0 w-full z-50 opacity-0 transition-opacity ${navContainerClass}`}
+        >
+            <div className="flex justify-start md:justify-between items-center max-w-7xl mx-auto px-4 md:px-12 py-4 gap-4 md:gap-0">
                 {/* Left: Logo */}
-                <div className="flex justify-center md:justify-start">
+                <div className="flex items-center">
                     <Link to="/">
-                        <img src={logoSrc} alt="PLK Capital" className="h-8 md:h-12 w-auto object-contain" />
+                        <img src={logoSrc} alt="PLK Capital" className="h-6 md:h-12 w-auto object-contain" />
                     </Link>
                 </div>
 
                 {/* Center: Nav */}
-                <div className="flex justify-center w-full md:w-auto">
-                    <Menu setActive={setActive}>
-                        <MenuItem setActive={setActive} active={active} item="About Us" href="/about" className="text-xs md:text-sm font-medium hover:text-plk-lima">
-                            <div className="flex flex-col md:flex-row gap-6 md:gap-12 p-4 md:p-6 w-[85vw] md:w-[600px] max-h-[60vh] overflow-y-auto md:overflow-visible">
+                <div className="flex items-center md:mr-16">
+                    <Menu setActive={setActive} className="bg-transparent border-none shadow-none backdrop-blur-none p-0">
+                        <MenuItem setActive={setActive} active={active} item="About Us" href="/about" className={`text-xs md:text-xl font-medium font-montserrat  hover:text-plk-lima ${textColor}`}>
+                            <div className="flex flex-col md:flex-row gap-6 md:gap-12 p-4 md:p-6 w-[85vw] md:w-[600px] max-h-[60vh] overflow-y-auto md:overflow-visible text-start">
                                 {/* Left Content */}
                                 <div className="flex-1 border-b md:border-b-0 md:border-r border-white/10 pb-4 md:pb-0 md:pr-6">
                                     <div className="text-xs md:text-sm font-semibold tracking-widest text-plk-lima uppercase mb-1 md:mb-2 text-left">About Us</div>
@@ -56,8 +63,8 @@ export const Header: React.FC = () => {
                                 </div>
                             </div>
                         </MenuItem>
-                        <MenuItem setActive={setActive} active={active} item="Solutions" className="text-xs md:text-sm font-medium hover:text-plk-lima">
-                            <div className="flex flex-col md:flex-row gap-4 md:gap-4 p-4 md:p-6 w-[85vw] md:w-[650px] items-stretch max-h-[60vh] overflow-y-auto md:overflow-visible">
+                        <MenuItem setActive={setActive} active={active} item="Solutions" className={`text-xs md:text-xl font-medium font-montserrat hover:text-plk-lima ${textColor}`}>
+                            <div className="flex flex-col md:flex-row gap-4 md:gap-4 p-4 md:p-6 w-[85vw] md:w-[650px] items-stretch max-h-[60vh] overflow-y-auto md:overflow-visible text-start">
                                 {/* Left: Wealth Management */}
                                 <div className="flex-1 rounded-lg hover:bg-white/5 transition-colors p-3 md:p-4 group">
                                     <Link to="/wealth-management" onClick={() => setActive(null)} className="block h-full">
@@ -80,7 +87,7 @@ export const Header: React.FC = () => {
                                         <div className="flex flex-col h-full justify-between space-y-2">
                                             <div>
                                                 <h4 className="text-lg md:text-xl font-montserrat text-white group-hover:text-plk-lima transition-colors mb-2">Liquidity Management</h4>
-                                                <p className="text-xs md:text-sm text-white/50 leading-relaxed">For Business & Corporates</p>
+                                                <p className="text-xs md:text-sm text-white/50 leading-relaxed">For Businesses & Corporate</p>
                                             </div>
                                             <span className="text-plk-lima text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity">Explore &rarr;</span>
                                         </div>
@@ -88,12 +95,9 @@ export const Header: React.FC = () => {
                                 </div>
                             </div>
                         </MenuItem>
-                        <Link to="/contact" onMouseEnter={() => setActive(null)} className="text-xs md:text-sm font-medium text-white hover:text-plk-lima">Lets Chat</Link>
+                        <Link to="/contact" onMouseEnter={() => setActive(null)} className={`text-xs md:text-xl font-medium font-montserrat hover:text-plk-lima ${textColor}`}>Lets Chat</Link>
                     </Menu>
                 </div>
-
-                {/* Right: Empty Spacer (Hidden on mobile) */}
-                <div className="hidden md:flex justify-end"></div>
             </div>
         </header>
     );

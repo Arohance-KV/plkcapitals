@@ -4,21 +4,21 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ["'Josefin Sans'"],
+      serif: ["'Source Serif 4'"],
+      montserrat: ["'Montserrat'"],
+    },
     extend: {
       colors: {
         plk: {
-          navy: '#0B1B2F', // Updated Navy
+          navy: '#0b1b2f',
           red: '#D93025',
           green: '#4CAF50',
-          lima: '#A1CD3A', // New Tertiary
-          white: '#FFFFFF',
+          lima: '#A1CD3A',
+          white: '#e5e8ec',
           grey: '#A0A0A0',
         }
-      },
-      fontFamily: {
-        serif: ['"Source Serif 4"', 'serif'],
-        sans: ['Inter', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

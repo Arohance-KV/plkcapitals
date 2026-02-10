@@ -106,7 +106,7 @@ export const LiquidityManagement: React.FC = () => {
             {/* 1. Hero */}
             <section ref={section1Ref} className="w-full bg-plk-navy pt-52 pb-24 px-6 md:px-12 mb-0 opacity-0">
                 <div className="max-w-6xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-medium uppercase text-white mb-8 leading-snug tracking-[0.05em] max-w-4xl">
+                    <h1 style={{ lineHeight: 1.2 }} className="text-5xl md:text-6xl text-plk-white font-montserrat font-medium uppercase mb-12 tracking-[0.01em] max-w-5xl">
                         Liquidity Management for Businesses and Corporate<span className="text-plk-lima">.</span>
                     </h1>
                     <p className="text-2xl md:text-2xl text-white/80 font-sans font-light max-w-3xl leading-relaxed">
@@ -220,7 +220,7 @@ export const LiquidityManagement: React.FC = () => {
                     </h2>
 
                     <div className="mt-8 reveal-item">
-                        <a href="/contact" className="inline-block bg-plk-lima font-montserrat font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-sm hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
+                        <a href="/contact" className="inline-block bg-plk-lima font-sans font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-full hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
                             Schedule a Conversation
                         </a>
                     </div>

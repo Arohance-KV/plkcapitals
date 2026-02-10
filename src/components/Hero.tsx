@@ -23,12 +23,15 @@ export const Hero: React.FC<HeroProps> = ({ variant = 'default' }) => {
     const dividerColor = isLight ? 'bg-[#0E293C]/20' : 'bg-plk-white';
 
     return (
-        <section ref={containerRef} className="px-4 md:px-12 pt-40 pb-20 w-full opacity-0 min-h-screen flex flex-col justify-center">
-            <div className="flex flex-col items-start relative z-10 max-w-4xl w-full">
+        <section ref={containerRef} className="pt-40 pb-20 w-full opacity-0 min-h-screen flex flex-col justify-center">
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-12">
+                <div className="flex flex-col items-start relative z-10 max-w-4xl w-full">
 
-                {/* Text Content */}
-                <div ref={textRef} className="flex-1">
-                    <h1 className={`text-5xl md:text-7xl font-montserrat font-medium uppercase ${textColor} leading-none md:leading-snug mb-12 tracking-[0.05em]`}>
+                    {/* Text Content */}
+                    <h1
+                        style={{ lineHeight: 1.2 }}
+                        className={`text-5xl md:text-6xl font-montserrat font-medium uppercase ${textColor} mb-12 tracking-[0.01em]`}
+                    >
                         Helping your money <br />
                         stay aligned with <br />
                         your life<span className="text-plk-lima">.</span>
@@ -42,6 +45,6 @@ export const Hero: React.FC<HeroProps> = ({ variant = 'default' }) => {
 
             {/* Divider Line */}
             <div className={`h-[1px] w-full ${dividerColor} mt-24`}></div>
-        </section>
+        </section >
     );
 };

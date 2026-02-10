@@ -13,7 +13,7 @@ export const Contact: React.FC = () => {
     <main className="flex-grow bg-plk-white text-plk-navy pb-20">
       {/* Hero Section */}
       <section className="w-full bg-plk-navy font-montserrat font-medium uppercase  pt-52 pb-24 px-6 leading-snug tracking-[0.05em] md:px-12 mb-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h1 className="text-6xl md:text-5xl  text-white drop-shadow-sm">
             Contact Us<span className="text-plk-lima">.</span>
           </h1>

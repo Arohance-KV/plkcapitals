@@ -76,21 +76,23 @@ export const Philosophy: React.FC<PhilosophyProps> = ({ variant = 'default' }) =
             <div className="max-w-4xl mx-auto px-4 md:px-12 text-center space-y-12">
                 <SplitText
                     id="line-1"
-                    className={`text-2xl md:text-3xl font-montserrat font-medium ${textColor} leading-relaxed`}
-                    text="Money decisions are rarely just about numbers."
+                    className={`text-2xl md:text-3xl font-montserrat font-medium italic ${textColor} leading-relaxed`}
+                    text="Money decisions are rarely just about numbers"
                 />
 
-                <SplitText
-                    id="line-2"
-                    className={`text-2xl md:text-3xl font-montserrat font-medium ${textColor} leading-relaxed`}
-                    text="They are shaped by responsibilities, future commitments, cash flows, and uncertainty."
-                />
+                <div className="space-y-2">
+                    <SplitText
+                        id="line-2"
+                        className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
+                        text="They are shaped by responsibilities, future commitments, cash flows, and uncertainty."
+                    />
 
-                <SplitText
-                    id="line-3"
-                    className={`text-2xl md:text-3xl font-montserrat font-medium ${textColor} leading-relaxed`}
-                    text="Our role is to bring structure and clarity so your wealth quietly supports your life, allowing you to focus on other important things."
-                />
+                    <SplitText
+                        id="line-3"
+                        className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
+                        text="Our role is to bring structure and clarity so your wealth quietly supports your life, allowing you to focus on other important things."
+                    />
+                </div>
             </div>
 
             {/* Divider Line */}

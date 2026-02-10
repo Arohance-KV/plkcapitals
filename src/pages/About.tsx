@@ -239,11 +239,11 @@ export const About: React.FC = () => {
         <div className="w-full md:w-2/3 flex flex-col items-center md:items-start space-y-8 relative">
 
           {/* Decorative Quotes */}
-          <span className="absolute -top-12 -left-4 md:-top-16 md:-left-16 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
+          <span className="absolute -top-4 -left-2 md:-top-25 md:-left-5 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
             &ldquo;
           </span>
 
-          <blockquote className="relative z-10 text-xl md:text-3xl leading-relaxed text-plk-navy font-montserrat font-medium text-center md:text-left">
+          <blockquote className="relative z-10 text-xl md:text-4xl leading-relaxed text-plk-navy font-sans font-light italic text-center md:text-left">
             Clients trust us with decisions that affect their families, their businesses, and their future.
             <br className="hidden md:block" />
             <br className="hidden md:block" />
@@ -251,7 +251,7 @@ export const About: React.FC = () => {
             Our responsibility is to act in their best interest clearly, independently, and without conflict.
           </blockquote>
 
-          <span className="absolute -bottom-20 right-0 md:-bottom-24 md:-right-8 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
+          <span className="absolute -bottom-8 right-0 md:-bottom-12 md:-right-4 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
             &rdquo;
           </span>
 
@@ -282,7 +282,7 @@ export const About: React.FC = () => {
             <div className="w-full">
               <SplitText
                 id="belief-step-2"
-                className="text-lg md:text-xl text-plk-navy font-montserrat font-medium leading-relaxed"
+                className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed"
                 text="Money decisions are deeply personal. They affect families, responsibilities, and peace of mind not just returns."
               />
             </div>
@@ -295,7 +295,7 @@ export const About: React.FC = () => {
                 "Discipline over excitement",
                 "Guidance through all market conditions"
               ].map((item, i) => (
-                <div key={i} className="belief-step-3-item text-xl md:text-2xl text-plk-navy font-montserrat font-medium opacity-0 translate-y-4">
+                <div key={i} className="belief-step-3-item text-xl md:text-2xl text-plk-navy font-sans font-light opacity-0 translate-y-4">
                   {item}
                 </div>
               ))}
@@ -305,7 +305,7 @@ export const About: React.FC = () => {
             <div className="max-w-2xl bg-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F] shadow-sm">
               <SplitText
                 id="belief-step-4"
-                className="text-lg md:text-xl text-plk-navy font-montserrat font-medium leading-relaxed"
+                className="text-lg md:text-xl text-plk-navy font-sans font-light leading-relaxed"
                 text="Our role is not to predict markets, but to help clients make better decisions consistently especially when it matters most."
               />
             </div>

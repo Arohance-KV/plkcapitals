@@ -41,14 +41,14 @@ export const AboutUs: React.FC<AboutUsProps> = ({ variant = 'default' }) => {
             {/* Top Section */}
             <div ref={topSectionRef} className="max-w-7xl mx-auto px-4 md:px-12 text-left mb-20">
                 <h2 className={`text-3xl md:text-4xl lg:text-6xl font-montserrat font-medium ${textColor} mb-6 leading-tight`}>
-                    Financial peace of mind<span className="text-plk-lima">.</span>
+                    Financial Peace Of Mind<span className="text-plk-lima">.</span>
                 </h2>
                 <p className={`text-2xl md:text-2xl ${subTextColor} font-sans font-light mb-12`}>
                     Something worth building patiently over time.
                 </p>
                 <div className="flex justify-start">
                     <div className="reveal-item">
-                        <a href="/contact" className="inline-block bg-plk-lima font-montserrat font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-sm hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
+                        <a href="/contact" className="inline-block bg-plk-lima font-sans font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-full hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
                             Schedule a Conversation
                         </a>
                     </div>

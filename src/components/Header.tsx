@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
                 {/* Left: Logo */}
                 <div className="flex items-center">
                     <Link to="/">
-                        <img src={logoSrc} alt="PLK Capital" className="h-5 md:h-12 w-auto object-contain" />
+                        <img src={logoSrc} alt="PLK Capital" className="h-5 md:h-10 w-auto object-contain" />
                     </Link>
                 </div>
 

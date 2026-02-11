@@ -73,10 +73,10 @@ export const Philosophy: React.FC<PhilosophyProps> = ({ variant = 'default' }) =
 
     return (
         <section ref={sectionRef} className={`w-full py-20 ${isLight ? 'bg-plk-white' : ''}`}>
-            <div className="max-w-4xl mx-auto px-4 md:px-12 text-center space-y-12">
+            <div className="max-w-4xl mx-auto px-4 md:px-12 text-center space-y-[1.6rem]">
                 <SplitText
                     id="line-1"
-                    className={`text-2xl md:text-2xl font-sans font-light  ${textColor} leading-loose`}
+                    className={`text-2xl md:text-2xl font-sans font-light  ${textColor} leading-[1.6rem]`}
                     text="Money decisions are rarely just about numbers"
                     prefix={
                         <svg viewBox="0 0 290 290" className="inline-block mr-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top -translate-y-2">
@@ -86,13 +86,13 @@ export const Philosophy: React.FC<PhilosophyProps> = ({ variant = 'default' }) =
                 />
                 <SplitText
                     id="line-2"
-                    className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
+                    className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-[1.6rem]`}
                     text="They are shaped by responsibilities, future commitments, cash flows, and uncertainty."
                 />
 
                 <SplitText
                     id="line-3"
-                    className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
+                    className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-[1.6rem]`}
                     text="Our role is to bring structure and clarity so your wealth quietly supports your life, allowing you to focus on other important things."
                     suffix={
                         <svg viewBox="0 0 290 290" className="inline-block ml-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top translate-y-2">

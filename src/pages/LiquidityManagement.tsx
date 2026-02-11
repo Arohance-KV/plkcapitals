@@ -248,7 +248,7 @@ export const LiquidityManagement: React.FC = () => {
 
                     <SplitText
                         id="lm-next-step-header"
-                        className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
+                        className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
                         text="Let’s review how your surplus capital is currently structured."
                         prefix={<span className="text-plk-navy font-montserrat">“</span>}
                         suffix={<span className="text-plk-navy font-montserrat">”</span>}

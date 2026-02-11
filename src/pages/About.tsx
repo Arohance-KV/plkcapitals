@@ -533,7 +533,7 @@ export const About: React.FC = () => {
       {/* Section 5: Let's Chat */}
       <section ref={chatRef} className="w-full bg-plk-white py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-          <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+          <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
             LET’S CHAT
           </div>
 

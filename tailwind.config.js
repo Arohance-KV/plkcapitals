@@ -17,7 +17,7 @@ export default {
           green: '#4CAF50',
           lima: '#A1CD3A',
           white: '#e5e8ec',
-          grey: '#A0A0A0',
+          grey: '#acacacff',
         }
       },
       backgroundImage: {

@@ -149,7 +149,7 @@ export const LiquidityManagement: React.FC = () => {
             {/* 2. What This Is About */}
             <section ref={section2Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
                         WHAT THIS IS ABOUT
                     </div>
 
@@ -176,7 +176,7 @@ export const LiquidityManagement: React.FC = () => {
             {/* 3. How We Work With You */}
             <section ref={section3Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
                         HOW WE WORK WITH YOU
                     </div>
 
@@ -242,7 +242,7 @@ export const LiquidityManagement: React.FC = () => {
             {/* 4. Natural Next Step */}
             <section ref={section4Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
                         NATURAL NEXT STEP
                     </div>
 

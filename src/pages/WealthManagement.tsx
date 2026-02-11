@@ -150,7 +150,7 @@ export const WealthManagement: React.FC = () => {
             {/* 2. What This Is About */}
             <section ref={section2Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
                         WHAT THIS IS ABOUT
                     </div>
 
@@ -177,7 +177,7 @@ export const WealthManagement: React.FC = () => {
             {/* 3. How We Work With You */}
             <section ref={section3Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
                         HOW WE WORK WITH YOU
                     </div>
 
@@ -228,7 +228,7 @@ export const WealthManagement: React.FC = () => {
                     </div>
                     <SplitText
                         id="wm-next-step-header"
-                        className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
+                        className="text-2xl md:text-2xl lg:text-4xl text-plk-navy-80 font-montserrat font-medium italic mb-8 leading-tight block"
                         text="Let's review your current portfolio and see how it fits into your life today."
                         prefix={<span className="text-plk-navy font-montserrat">“</span>}
                         suffix={<span className="text-plk-navy font-montserrat">”</span>}

@@ -101,6 +101,37 @@ export const LiquidityManagement: React.FC = () => {
         return () => ctx.revert();
     }, []);
 
+    // Section 4: "Natural Next Step" Animation
+    useEffect(() => {
+        const el = section4Ref.current;
+        if (!el) return;
+
+        const ctx = gsap.context(() => {
+            gsap.to(el.querySelectorAll('#lm-next-step-header .split-word'), {
+                opacity: 1, y: 0, filter: "blur(0px)",
+                duration: 1.5, stagger: 0.05, ease: "power3.out",
+                scrollTrigger: {
+                    trigger: '#lm-next-step-header',
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+            gsap.to(el.querySelectorAll('.lm-next-step-btn'), {
+                opacity: 1, y: 0,
+                duration: 1, ease: "power3.out", delay: 0.5,
+                scrollTrigger: {
+                    trigger: '#lm-next-step-header',
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+
+        }, section4Ref);
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <main className="flex-grow bg-[#F7F2EF] text-[#0B1B2F] overflow-hidden pb-0">
             {/* 1. Hero */}
@@ -118,7 +149,7 @@ export const LiquidityManagement: React.FC = () => {
             {/* 2. What This Is About */}
             <section ref={section2Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-12 opacity-60">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
                         WHAT THIS IS ABOUT
                     </div>
 
@@ -145,7 +176,7 @@ export const LiquidityManagement: React.FC = () => {
             {/* 3. How We Work With You */}
             <section ref={section3Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
-                    <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6 opacity-60">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
                         HOW WE WORK WITH YOU
                     </div>
 
@@ -211,18 +242,24 @@ export const LiquidityManagement: React.FC = () => {
             {/* 4. Natural Next Step */}
             <section ref={section4Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-                    <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-8 opacity-60">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
                         NATURAL NEXT STEP
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl text-plk-navy font-montserrat font-medium mb-12 leading-tight opacity-0 translate-y-4 lm-next-step">
-                        Let’s review how your surplus capital is currently structured.
-                    </h2>
+                    <SplitText
+                        id="lm-next-step-header"
+                        className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
+                        text="Let’s review how your surplus capital is currently structured."
+                        prefix={<span className="text-plk-navy font-montserrat">“</span>}
+                        suffix={<span className="text-plk-navy font-montserrat">”</span>}
+                    />
 
-                    <div className="mt-8 reveal-item">
-                        <a href="/contact" className="inline-block bg-plk-lima font-sans font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-full hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
-                            Schedule a Conversation
-                        </a>
+                    <div className="opacity-0 translate-y-4 lm-next-step-btn">
+                        <div className="mt-8">
+                            <a href="/contact" className="inline-block bg-plk-lima font-sans font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-full hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
+                                Schedule a Conversation
+                            </a>
+                        </div>
                     </div>
                 </div>
 

@@ -76,23 +76,30 @@ export const Philosophy: React.FC<PhilosophyProps> = ({ variant = 'default' }) =
             <div className="max-w-4xl mx-auto px-4 md:px-12 text-center space-y-12">
                 <SplitText
                     id="line-1"
-                    className={`text-2xl md:text-3xl font-montserrat font-medium italic ${textColor} leading-relaxed`}
+                    className={`text-2xl md:text-2xl font-sans font-light  ${textColor} leading-loose`}
                     text="Money decisions are rarely just about numbers"
+                    prefix={
+                        <svg viewBox="0 0 290 290" className="inline-block mr-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top -translate-y-2">
+                            <path d="M22.12 145v97.65h97.65V145H70.95c0-26.92 21.9-48.82 48.82-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65zm245.76-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65v97.65h97.65V145h-48.82c-.01-26.92 21.89-48.82 48.82-48.82z" fill="currentColor" />
+                        </svg>
+                    }
+                />
+                <SplitText
+                    id="line-2"
+                    className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
+                    text="They are shaped by responsibilities, future commitments, cash flows, and uncertainty."
                 />
 
-                <div className="space-y-2">
-                    <SplitText
-                        id="line-2"
-                        className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
-                        text="They are shaped by responsibilities, future commitments, cash flows, and uncertainty."
-                    />
-
-                    <SplitText
-                        id="line-3"
-                        className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
-                        text="Our role is to bring structure and clarity so your wealth quietly supports your life, allowing you to focus on other important things."
-                    />
-                </div>
+                <SplitText
+                    id="line-3"
+                    className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-loose`}
+                    text="Our role is to bring structure and clarity so your wealth quietly supports your life, allowing you to focus on other important things."
+                    suffix={
+                        <svg viewBox="0 0 290 290" className="inline-block ml-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top translate-y-2">
+                            <path d="M267.88 145V47.35h-97.65V145h48.82c0 26.92-21.9 48.82-48.82 48.82v48.82c53.93.01 97.65-43.71 97.65-97.64zM22.12 193.82v48.82c53.93 0 97.65-43.72 97.65-97.65V47.35H22.12V145h48.82c.01 26.92-21.89 48.82-48.82 48.82z" fill="currentColor" />
+                        </svg>
+                    }
+                />
             </div>
 
             {/* Divider Line */}

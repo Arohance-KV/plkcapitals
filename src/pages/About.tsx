@@ -142,6 +142,46 @@ export const About: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  // Animation for "About Quote"
+  useEffect(() => {
+    const el = section1Ref.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      const animConfig = {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 1.5,
+        stagger: 0.08,
+        ease: "power3.out"
+      };
+
+      // Line 1
+      gsap.to(el.querySelectorAll('#about-quote-1 .split-word'), {
+        ...animConfig,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 60%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Line 2
+      gsap.to(el.querySelectorAll('#about-quote-2 .split-word'), {
+        ...animConfig,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 60%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+    }, section1Ref);
+
+    return () => ctx.revert();
+  }, []);
+
   // Animation for "Fee Only" - Refactored to Independent Triggers
   useEffect(() => {
     const el = section3Ref.current;
@@ -218,6 +258,26 @@ export const About: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  // Animation for "Let's Chat" Header
+  useEffect(() => {
+    const el = chatRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      gsap.to(el.querySelectorAll('#chat-header .split-word'), {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1.5, stagger: 0.05, ease: "power3.out",
+        scrollTrigger: {
+          trigger: '#chat-header',
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+    }, chatRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <main className="flex-grow bg-plk-white text-[#0B1B2F] overflow-hidden">
 
@@ -238,22 +298,29 @@ export const About: React.FC = () => {
         {/* Quote */}
         <div className="w-full md:w-2/3 flex flex-col items-center md:items-start space-y-8 relative">
 
-          {/* Decorative Quotes */}
-          <span className="absolute -top-4 -left-2 md:-top-25 md:-left-5 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
-            &ldquo;
-          </span>
-
-          <blockquote className="relative z-10 text-xl md:text-4xl leading-relaxed text-plk-navy font-sans font-light italic text-center md:text-left">
-            Clients trust us with decisions that affect their families, their businesses, and their future.
-            <br className="hidden md:block" />
-            <br className="hidden md:block" />
-            <span className="md:hidden"><br /></span>
-            Our responsibility is to act in their best interest clearly, independently, and without conflict.
-          </blockquote>
-
-          <span className="absolute -bottom-8 right-0 md:-bottom-12 md:-right-4 text-[8rem] md:text-[12rem] leading-none text-plk-lima font-serif select-none pointer-events-none z-0">
-            &rdquo;
-          </span>
+          {/* Decorative Quotes using SplitText */}
+          <div className="flex flex-col space-y-8 md:space-y-12">
+            <SplitText
+              id="about-quote-1"
+              className="text-xl md:text-4xl leading-relaxed text-plk-navy font-sans font-light text-center md:text-left"
+              text="Clients trust us with decisions that affect their families, their businesses, and their future."
+              prefix={
+                <svg viewBox="0 0 290 290" className="inline-block mr-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top -translate-y-2">
+                  <path d="M22.12 145v97.65h97.65V145H70.95c0-26.92 21.9-48.82 48.82-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65zm245.76-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65v97.65h97.65V145h-48.82c-.01-26.92 21.89-48.82 48.82-48.82z" fill="currentColor" />
+                </svg>
+              }
+            />
+            <SplitText
+              id="about-quote-2"
+              className="text-xl md:text-4xl leading-relaxed text-plk-navy font-sans font-light text-center md:text-left"
+              text="Our responsibility is to act in their best interest clearly, independently, and without conflict."
+              suffix={
+                <svg viewBox="0 0 290 290" className="inline-block ml-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top translate-y-2">
+                  <path d="M267.88 145V47.35h-97.65V145h48.82c0 26.92-21.9 48.82-48.82 48.82v48.82c53.93.01 97.65-43.71 97.65-97.64zM22.12 193.82v48.82c53.93 0 97.65-43.72 97.65-97.65V47.35H22.12V145h48.82c.01 26.92-21.89 48.82-48.82 48.82z" fill="currentColor" />
+                </svg>
+              }
+            />
+          </div>
 
           <div className="w-16 h-[1px] bg-[#0B1B2F]/20 md:hidden"></div>
 
@@ -266,28 +333,30 @@ export const About: React.FC = () => {
       {/* Section 2: Our Belief (Refactored) */}
       <section ref={startRef} className="w-full bg-plk-white py-32 mb-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="max-w-4xl flex flex-col items-start text-left space-y-6 md:space-y-8">
+          <div className="max-w-5xl flex flex-col items-start text-left space-y-6 md:space-y-8">
 
-            {/* STEP 1: Main Anchor */}
+            {/* Main Anchor */}
             <div className="space-y-4">
-              <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6 opacity-60">Our Belief</div>
+              <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">Our Belief</div>
               <SplitText
                 id="belief-step-1"
-                className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium leading-tight"
+                className="text-3xl md:text-xl lg:text-5xl text-plk-navy font-montserrat font-medium italic leading-tight"
                 text="We believe wealth management works best when advice is independent and aligned with the client."
+                prefix={<span className="text-plk-navy font-montserrat">“</span>}
+                suffix={<span className="text-plk-navy font-montserrat">”</span>}
               />
             </div>
 
-            {/* STEP 2: Human Context */}
+            {/* anchor*/}
             <div className="w-full">
               <SplitText
                 id="belief-step-2"
-                className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed"
+                className="text-lg md:text-xl text-plk-navy font-sans font-light leading-relaxed"
                 text="Money decisions are deeply personal. They affect families, responsibilities, and peace of mind not just returns."
               />
             </div>
 
-            {/* STEP 3: Three Principles */}
+            {/* Three Principles */}
             <div className="flex flex-col space-y-3 md:space-y-4">
               <div className="h-[1px] w-12 bg-[#0B1B2F]/20 mb-2"></div>
               {[
@@ -316,17 +385,19 @@ export const About: React.FC = () => {
 
       {/* Section 3: Fee-Only*/}
       <section ref={section3Ref} className="w-full  max-w-6xl mx-auto px-6 md:px-12 mb-32">
-        <div className="max-w-3xl flex flex-col items-start text-left space-y-6 md:space-y-8">
-
-          <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2 opacity-60">
+        <div className="max-w-5xl flex flex-col items-start text-left space-y-6 md:space-y-8">
+          {/* Main anchor  */}
+          <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2 ">
             WHY WE ARE FEE-ONLY
           </div>
 
           {/* Anchor */}
           <SplitText
             id="fee-anchor"
-            className="text-2xl md:text-3xl lg:text-4xl text-plk-navy font-montserrat font-medium leading-tight"
+            className="text-3xl md:text-xl lg:text-5xl text-plk-navy font-montserrat font-medium italic leading-tight"
             text="We work as a fiduciary legally and ethically required to act in our clients’ best interest."
+            prefix={<span className="text-plk-navy font-montserrat">“</span>}
+            suffix={<span className="text-plk-navy font-montserrat">”</span>}
           />
 
           {/* Body */}
@@ -378,17 +449,19 @@ export const About: React.FC = () => {
       {/* Section 4: How We Think About Money */}
       <section id="how-we-think" ref={section4Ref} className="w-full bg-plk-white py-32 mb-32">
         <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <div className="max-w-3xl flex flex-col items-start text-left space-y-16">
+          <div className="max-w-5xl flex flex-col items-start text-left space-y-16">
 
             <div className="space-y-6">
-              <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2 opacity-60">
+              <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2  ">
                 HOW WE THINK ABOUT MONEY
               </div>
 
               <SplitText
                 id="think-intro"
-                className="text-2xl md:text-3xl lg:text-4xl text-plk-navy font-montserrat font-medium leading-tight"
+                className="text-3xl md:text-2xl lg:text-5xl text-plk-navy font-montserrat font-medium italic leading-tight"
                 text="We believe long-term outcomes are shaped more by how decisions are made than by trying to predict what markets will do next."
+                prefix={<span className="text-plk-navy font-montserrat">“</span>}
+                suffix={<span className="text-plk-navy font-montserrat">”</span>}
               />
             </div>
 
@@ -436,22 +509,26 @@ export const About: React.FC = () => {
       {/* Section 5: Let's Chat */}
       <section ref={chatRef} className="w-full bg-plk-white py-32">
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-          <div className="text-sm font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-8 opacity-60">
+          <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
             LET’S CHAT
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium mb-8 leading-tight opacity-0 translate-y-4 reveal-item">
-            A conversation is often the best place to begin.
-          </h2>
+          <SplitText
+            id="chat-header"
+            className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
+            text="A conversation is often the best place to begin."
+            prefix={<span className="text-plk-navy font-montserrat">“</span>}
+            suffix={<span className="text-plk-navy font-montserrat">”</span>}
+          />
 
-          <p className="text-2xl md:text-2xl text-plk-navy font-sans font-light leading-relaxed mb-12 opacity-0 translate-y-4 reveal-item">
+          <p className="text-2xl md:text-xl text-plk-navy font-sans font-light leading-relaxed mb-12 opacity-0 translate-y-4 reveal-item">
             We usually start by listening understanding your priorities, responsibilities, and what you’re looking to achieve.
             <br /><br />
             If it feels right, we take the next steps together.
           </p>
 
           <div className="mt-8 reveal-item">
-            <a href="/contact" className="inline-block bg-plk-lima font-montserrat font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-sm hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
+            <a href="/contact" className="inline-block bg-plk-lima font-sans font-medium text-plk-navy text-base px-6 py-3 md:text-lg md:px-8 md:py-4 rounded-full hover:bg-[#152E4D] hover:text-white transition-colors duration-300">
               Schedule a Conversation
             </a>
           </div>

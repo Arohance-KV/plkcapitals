@@ -141,7 +141,7 @@ export const WealthManagement: React.FC = () => {
                     <h1 style={{ lineHeight: 1.2 }} className="text-5xl md:text-6xl text-plk-white font-montserrat font-medium uppercase mb-12 tracking-[0.01em] max-w-5xl">
                         Wealth Management for Individuals & Families<span className="text-plk-lima">.</span>
                     </h1>
-                    <p className="text-2xl md:text-2xl text-white/80 font-sans font-light max-w-3xl leading-relaxed">
+                    <p className="text-2xl md:text-2xl text-plk-white font-sans font-light max-w-3xl leading-relaxed">
                         Helping your money stay aligned with your life as priorities change and time moves on.
                     </p>
                 </div>

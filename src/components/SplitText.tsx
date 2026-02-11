@@ -6,11 +6,12 @@ interface SplitTextProps {
     id?: string;
     prefix?: React.ReactNode;
     suffix?: React.ReactNode;
+    style?: React.CSSProperties;
 }
 
-export const SplitText: React.FC<SplitTextProps> = ({ text, className, id, prefix, suffix }) => {
+export const SplitText: React.FC<SplitTextProps> = ({ text, className, id, prefix, suffix, style }) => {
     return (
-        <div id={id} className={`split-text-container ${className}`}>
+        <div id={id} className={`split-text-container ${className}`} style={style}>
             {prefix && <span className="inline-block mr-2 opacity-0 translate-y-5 blur-sm split-word">{prefix}</span>}
             {text.split(" ").map((word, i) => (
                 <span key={i} className="inline-block mr-[0.3em] opacity-0 translate-y-5 blur-sm split-word">

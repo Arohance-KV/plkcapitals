@@ -1,9 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from './SplitText';
 import { useReveal, useStagger } from '../hooks/useGsap';
 import menuIcon from '../assets/icons/menu.png';
 import chartIcon from '../assets/icons/chart.png';
 import walletCheckIcon from '../assets/icons/wallet-check.png';
 import judgeIcon from '../assets/icons/judge.png';
+
+gsap.registerPlugin(ScrollTrigger);
 import legacyIcon from '../assets/icons/legacy.svg';
 
 interface HowWeWorkProps {
@@ -21,7 +26,29 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
     useReveal(containerRef, { threshold: 0.1 });
     useStagger(headerRef, "h2, p", { y: 20, delay: 0.1 });
     useStagger(gridRef, ".card-item", { y: 30, stagger: 0.1, delay: 0.2 });
-    useReveal(quoteRef, { y: 20, delay: 0.5 });
+
+    useEffect(() => {
+        const section = quoteRef.current;
+        if (!section) return;
+
+        const ctx = gsap.context(() => {
+            gsap.to(section.querySelectorAll('.split-word'), {
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+                duration: 1.5,
+                stagger: 0.08,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        }, quoteRef);
+
+        return () => ctx.revert();
+    }, []);
 
     const sectionBg = 'bg-plk-white';
     const textColor = 'text-plk-navy';
@@ -115,10 +142,22 @@ export const HowWeWork: React.FC<HowWeWorkProps> = ({ variant = 'default' }) => 
                 </div>
 
                 {/* Footer Quote */}
-                <div ref={quoteRef} className="text-center mt-20 max-w-4xl mx-auto opacity-0">
-                    <p className={`text-2xl md:text-3xl ${textColor} font-montserrat font-medium leading-normal`}>
-                        While life stages differ, our role remains the same providing clarity, discipline, and steady guidance through changing needs.
-                    </p>
+                <div ref={quoteRef} className="text-center mt-20 max-w-4xl mx-auto">
+                    <SplitText
+                        id="footer-quote"
+                        className={`text-2xl md:text-2xl font-sans font-light ${textColor} leading-[1.6rem]`}
+                        text="While life stages differ, our role remains the same providing clarity, discipline, and steady guidance through changing needs."
+                        prefix={
+                            <svg viewBox="0 0 290 290" className="inline-block mr-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top -translate-y-2">
+                                <path d="M22.12 145v97.65h97.65V145H70.95c0-26.92 21.9-48.82 48.82-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65zm245.76-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65v97.65h97.65V145h-48.82c-.01-26.92 21.89-48.82 48.82-48.82z" fill="currentColor" />
+                            </svg>
+                        }
+                        suffix={
+                            <svg viewBox="0 0 290 290" className="inline-block ml-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top translate-y-2">
+                                <path d="M267.88 145V47.35h-97.65V145h48.82c0 26.92-21.9 48.82-48.82 48.82v48.82c53.93.01 97.65-43.71 97.65-97.64zM22.12 193.82v48.82c53.93 0 97.65-43.72 97.65-97.65V47.35H22.12V145h48.82c.01 26.92-21.89 48.82-48.82 48.82z" fill="currentColor" />
+                            </svg>
+                        }
+                    />
                 </div>
 
             </div>

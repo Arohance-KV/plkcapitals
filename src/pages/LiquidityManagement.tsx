@@ -252,6 +252,7 @@ export const LiquidityManagement: React.FC = () => {
                         text="Let’s review how your surplus capital is currently structured."
                         prefix={<span className="text-plk-navy font-montserrat">“</span>}
                         suffix={<span className="text-plk-navy font-montserrat">”</span>}
+                        style={{ lineHeight: 1.6 }}
                     />
 
                     <div className="opacity-0 translate-y-4 lm-next-step-btn">

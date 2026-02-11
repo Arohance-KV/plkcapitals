@@ -115,12 +115,24 @@ export const About: React.FC = () => {
         }
       });
 
-      // Step 3
-      gsap.to(el.querySelectorAll('.belief-step-3-item'), {
-        opacity: 1, y: 0,
-        duration: 1, stagger: 0.3, ease: "power2.out",
+      // Step 3 (Refactored to "What we offer" card)
+      // Header
+      gsap.to(el.querySelectorAll('#belief-offer-header .split-word'), {
+        opacity: 1, y: 0, filter: "blur(0px)",
+        duration: 1.2, stagger: 0.05, ease: "power3.out",
         scrollTrigger: {
-          trigger: '.belief-step-3-item', // triggers on the first one
+          trigger: '#belief-offer-header',
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Items
+      gsap.to(el.querySelectorAll('.belief-offer-item'), {
+        opacity: 1, x: 0,
+        duration: 0.8, stagger: 0.1, ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.belief-offer-item',
           start: "top 85%",
           toggleActions: "play none none reverse"
         }
@@ -304,6 +316,7 @@ export const About: React.FC = () => {
               id="about-quote-1"
               className="text-xl md:text-4xl leading-relaxed text-plk-navy font-sans font-light text-center md:text-left"
               text="Clients trust us with decisions that affect their families, their businesses, and their future."
+              style={{ lineHeight: 1.6 }}
               prefix={
                 <svg viewBox="0 0 290 290" className="inline-block mr-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top -translate-y-2">
                   <path d="M22.12 145v97.65h97.65V145H70.95c0-26.92 21.9-48.82 48.82-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65zm245.76-48.82V47.35c-53.93 0-97.65 43.72-97.65 97.65v97.65h97.65V145h-48.82c-.01-26.92 21.89-48.82 48.82-48.82z" fill="currentColor" />
@@ -314,6 +327,7 @@ export const About: React.FC = () => {
               id="about-quote-2"
               className="text-xl md:text-4xl leading-relaxed text-plk-navy font-sans font-light text-center md:text-left"
               text="Our responsibility is to act in their best interest clearly, independently, and without conflict."
+              style={{ lineHeight: 1.6 }}
               suffix={
                 <svg viewBox="0 0 290 290" className="inline-block ml-2 text-plk-lima w-6 h-6 md:w-8 md:h-8 align-top translate-y-2">
                   <path d="M267.88 145V47.35h-97.65V145h48.82c0 26.92-21.9 48.82-48.82 48.82v48.82c53.93.01 97.65-43.71 97.65-97.64zM22.12 193.82v48.82c53.93 0 97.65-43.72 97.65-97.65V47.35H22.12V145h48.82c.01 26.92-21.89 48.82-48.82 48.82z" fill="currentColor" />
@@ -337,13 +351,14 @@ export const About: React.FC = () => {
 
             {/* Main Anchor */}
             <div className="space-y-4">
-              <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">Our Belief</div>
+              <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">Our Belief</div>
               <SplitText
                 id="belief-step-1"
-                className="text-3xl md:text-xl lg:text-5xl text-plk-navy font-montserrat font-medium italic leading-tight"
+                className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic"
                 text="We believe wealth management works best when advice is independent and aligned with the client."
                 prefix={<span className="text-plk-navy font-montserrat">“</span>}
                 suffix={<span className="text-plk-navy font-montserrat">”</span>}
+                style={{ lineHeight: 1.6 }}
               />
             </div>
 
@@ -351,32 +366,39 @@ export const About: React.FC = () => {
             <div className="w-full">
               <SplitText
                 id="belief-step-2"
-                className="text-lg md:text-xl text-plk-navy font-sans font-light leading-relaxed"
+                className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed"
                 text="Money decisions are deeply personal. They affect families, responsibilities, and peace of mind not just returns."
               />
             </div>
 
-            {/* Three Principles */}
-            <div className="flex flex-col space-y-3 md:space-y-4">
-              <div className="h-[1px] w-12 bg-[#0B1B2F]/20 mb-2"></div>
-              {[
-                "Clarity over complexity",
-                "Discipline over excitement",
-                "Guidance through all market conditions"
-              ].map((item, i) => (
-                <div key={i} className="belief-step-3-item text-xl md:text-2xl text-plk-navy font-sans font-light opacity-0 translate-y-4">
-                  {item}
-                </div>
-              ))}
-            </div>
+            {/* Three Principles - Refactored to match Fee-Only style */}
+            <SplitText
+              id="belief-offer-header"
+              className="text-xl md:text-2xl font-medium text-plk-navy font-montserrat"
+              text="What we offer"
+            />
+            <div className="w-full bg-plk-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F]/20 shadow-sm mt-6">
+              <ul className="space-y-4">
+                {[
+                  "Clarity over complexity",
+                  "Discipline over excitement",
+                  "Guidance through all market conditions"
+                ].map((item, i) => (
+                  <li key={i} className="belief-offer-item flex items-center space-x-3 opacity-0 -translate-x-4">
+                    <span className="w-1.5 h-1.5 bg-[#0B1B2F] rounded-full"></span>
+                    <span className="text-2xl text-plk-navy font-sans font-light">{item}</span>
+                  </li>
+                ))}
 
-            {/* STEP 4: Role Clarity */}
-            <div className="max-w-2xl bg-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F] shadow-sm">
-              <SplitText
-                id="belief-step-4"
-                className="text-lg md:text-xl text-plk-navy font-sans font-light leading-relaxed"
-                text="Our role is not to predict markets, but to help clients make better decisions consistently especially when it matters most."
-              />
+                {/* Footer Item inside Card */}
+                <li className="pt-4 mt-4 border-t border-[#0B1B2F]/10">
+                  <SplitText
+                    id="belief-step-4"
+                    className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed"
+                    text="Our role is not to predict markets, but to help clients make better decisions consistently especially when it matters most."
+                  />
+                </li>
+              </ul>
             </div>
 
           </div>
@@ -387,17 +409,18 @@ export const About: React.FC = () => {
       <section ref={section3Ref} className="w-full  max-w-6xl mx-auto px-6 md:px-12 mb-32">
         <div className="max-w-5xl flex flex-col items-start text-left space-y-6 md:space-y-8">
           {/* Main anchor  */}
-          <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2 ">
+          <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-2 ">
             WHY WE ARE FEE-ONLY
           </div>
 
           {/* Anchor */}
           <SplitText
             id="fee-anchor"
-            className="text-3xl md:text-xl lg:text-5xl text-plk-navy font-montserrat font-medium italic leading-tight"
+            className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic leading-tight"
             text="We work as a fiduciary legally and ethically required to act in our clients’ best interest."
             prefix={<span className="text-plk-navy font-montserrat">“</span>}
             suffix={<span className="text-plk-navy font-montserrat">”</span>}
+            style={{ lineHeight: 1.6 }}
           />
 
           {/* Body */}
@@ -452,16 +475,17 @@ export const About: React.FC = () => {
           <div className="max-w-5xl flex flex-col items-start text-left space-y-16">
 
             <div className="space-y-6">
-              <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-2  ">
+              <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-2  ">
                 HOW WE THINK ABOUT MONEY
               </div>
 
               <SplitText
                 id="think-intro"
-                className="text-3xl md:text-2xl lg:text-5xl text-plk-navy font-montserrat font-medium italic leading-tight"
+                className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic leading-tight"
                 text="We believe long-term outcomes are shaped more by how decisions are made than by trying to predict what markets will do next."
                 prefix={<span className="text-plk-navy font-montserrat">“</span>}
                 suffix={<span className="text-plk-navy font-montserrat">”</span>}
+                style={{ lineHeight: 1.6 }}
               />
             </div>
 
@@ -515,10 +539,11 @@ export const About: React.FC = () => {
 
           <SplitText
             id="chat-header"
-            className="text-3xl md:text-4xl lg:text-5xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
+            className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
             text="A conversation is often the best place to begin."
             prefix={<span className="text-plk-navy font-montserrat">“</span>}
             suffix={<span className="text-plk-navy font-montserrat">”</span>}
+            style={{ lineHeight: 1.6 }}
           />
 
           <p className="text-2xl md:text-xl text-plk-navy font-sans font-light leading-relaxed mb-12 opacity-0 translate-y-4 reveal-item">

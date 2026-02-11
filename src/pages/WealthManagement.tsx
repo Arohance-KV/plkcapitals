@@ -232,6 +232,7 @@ export const WealthManagement: React.FC = () => {
                         text="Let's review your current portfolio and see how it fits into your life today."
                         prefix={<span className="text-plk-navy font-montserrat">“</span>}
                         suffix={<span className="text-plk-navy font-montserrat">”</span>}
+                        style={{ lineHeight: 1.6 }}
                     />
 
                     <div className="opacity-0 translate-y-4 wm-next-step-btn">

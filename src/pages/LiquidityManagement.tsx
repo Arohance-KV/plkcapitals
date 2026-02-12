@@ -156,17 +156,17 @@ export const LiquidityManagement: React.FC = () => {
                     <div className="space-y-12">
                         <SplitText
                             id="lm-s2-line1"
-                            className="text-xl md:text-2xl text-plk-navy font-montserrat font-medium leading-relaxed block"
+                            className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed block"
                             text="Business capital has a different role than personal wealth."
                         />
                         <SplitText
                             id="lm-s2-line2"
-                            className="text-xl md:text-2xl font-montserrat font-medium text-plk-navy leading-relaxed block"
+                            className="text-lg md:text-2xl font-sans font-light text-plk-navy leading-relaxed block"
                             text="It needs to remain available, stable, and aligned with business cycles not locked away or exposed unnecessarily."
                         />
                         <SplitText
                             id="lm-s2-line3"
-                            className="text-xl md:text-2xl font-montserrat font-medium text-plk-navy leading-relaxed block"
+                            className="text-lg md:text-2xl font-sans font-light text-plk-navy leading-relaxed block"
                             text="Our role is to help structure surplus capital decisions so funds are managed efficiently, while the business remains the priority."
                         />
                     </div>
@@ -250,8 +250,6 @@ export const LiquidityManagement: React.FC = () => {
                         id="lm-next-step-header"
                         className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
                         text="Let’s review how your surplus capital is currently structured."
-                        prefix={<span className="text-plk-navy font-montserrat">“</span>}
-                        suffix={<span className="text-plk-navy font-montserrat">”</span>}
                         style={{ lineHeight: 1.6 }}
                     />
 

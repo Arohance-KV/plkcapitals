@@ -157,17 +157,17 @@ export const WealthManagement: React.FC = () => {
                     <div className="space-y-12">
                         <SplitText
                             id="wm-s2-line1"
-                            className="text-xl md:text-2xl text-plk-navy font-montserrat font-medium leading-relaxed block"
+                            className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed block"
                             text="Every family’s financial life is shaped by responsibilities, future commitments, and how comfortable you are with ups and downs along the way."
                         />
                         <SplitText
                             id="wm-s2-line2"
-                            className="text-xl md:text-2xl text-plk-navy font-montserrat font-medium leading-relaxed block"
+                            className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed block"
                             text="We begin by understanding these clearly, then structure portfolios that fit your life today and adapt as it evolves."
                         />
                         <SplitText
                             id="wm-s2-line3"
-                            className="text-xl md:text-2xl text-plk-navy font-montserrat font-medium leading-relaxed block"
+                            className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed block"
                             text="The aim is simple: your money should work quietly in the background, so you can focus on what matters more."
                         />
                     </div>
@@ -230,8 +230,6 @@ export const WealthManagement: React.FC = () => {
                         id="wm-next-step-header"
                         className="text-2xl md:text-2xl lg:text-4xl text-plk-navy-80 font-montserrat font-medium italic mb-8 leading-tight block"
                         text="Let's review your current portfolio and see how it fits into your life today."
-                        prefix={<span className="text-plk-navy font-montserrat">“</span>}
-                        suffix={<span className="text-plk-navy font-montserrat">”</span>}
                         style={{ lineHeight: 1.6 }}
                     />
 

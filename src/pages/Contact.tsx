@@ -41,7 +41,7 @@ export const Contact: React.FC = () => {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 </div>
                 <div>
-                  <h4 className=" text-xl font-medium font-montserrat mb-1 text-plk-navy">Address</h4>
+                  <h4 className=" text-xl font-medium font-montserrat mb-3 text-plk-navy">Address</h4>
                   <p className="text-plk-navy font-light font-sans">
                     <span className="font-medium block mb-1">PLK CAPITAL ADVISORS PRIVATE LIMITED</span>
                     #51, Pushpa Vatika, 1st Floor, C Flat,<br />
@@ -98,23 +98,23 @@ export const Contact: React.FC = () => {
               <form ref={formRef} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-plk-navy">Name <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-montserrat font-medium text-plk-navy">Name <span className="text-red-500">*</span></label>
                     <input type="text" placeholder="John Doe" required className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light" />
                   </div>
                   <div className="space-y-2">
-                    <label className="block text-sm font-medium text-plk-navy">Email <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-montserrat font-medium text-plk-navy">Email <span className="text-red-500">*</span></label>
                     <input type="email" placeholder="john@example.com" required className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-plk-navy">Phone <span className="text-red-500">*</span></label>
+                  <label className="block text-sm font-montserrat font-medium text-plk-navy">Phone <span className="text-red-500">*</span></label>
                   <input type="tel" placeholder="+91 " required className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light" />
                 </div>
 
                 {/* Portfolio Review */}
                 <div className="space-y-3">
-                  <label className="block text-sm font-medium text-plk-navy">Would you like us to review your current portfolio during our conversation?</label>
+                  <label className="block text-sm font-montserrat font-medium text-plk-navy">Would you like us to review your current portfolio during our conversation?</label>
                   <div className="flex gap-6">
                     <label className="flex items-center gap-2 cursor-pointer">
                       <input type="radio" name="portfolio_review" value="yes" className="accent-plk-navy" />
@@ -134,7 +134,7 @@ export const Contact: React.FC = () => {
 
                 {/* Journey */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-plk-navy">Where are you in your journey?</label>
+                  <label className="block text-sm font-montserrat font-medium text-plk-navy">Where are you in your journey?</label>
                   <select className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors text-plk-navy font-light">
                     <option value="" disabled selected>Select an option</option>
                     <option value="business_owner">Business Owner / Entrepreneur</option>
@@ -148,7 +148,7 @@ export const Contact: React.FC = () => {
 
                 {/* Investable Assets */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-plk-navy">Approximate investable assets (Current Portfolio + Investable Cash)</label>
+                  <label className="block text-sm font-montserrat font-medium text-plk-navy">Approximate investable assets (Current Portfolio + Investable Cash)</label>
                   <select className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors text-plk-navy font-light">
                     <option value="" disabled selected>Select a range</option>
                     <option value="50L-2.5Cr">Rs 50L To Rs 2.5Cr</option>
@@ -159,7 +159,7 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-plk-navy">Message</label>
+                  <label className="block text-sm font-montserrat font-medium text-plk-navy">Message</label>
                   <textarea rows={5} placeholder="Anything specific you’d like us to discuss?" className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light resize-none"></textarea>
                 </div>
 

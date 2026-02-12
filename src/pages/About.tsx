@@ -375,7 +375,7 @@ export const About: React.FC = () => {
             <SplitText
               id="belief-offer-header"
               className="text-xl md:text-2xl font-medium text-plk-navy font-montserrat"
-              text="What we offer"
+              text="What we offer:"
             />
             <div className="w-full bg-plk-white p-6 md:p-8 rounded-sm border-l-4 border-[#0B1B2F]/20 shadow-sm mt-6">
               <ul className="space-y-4">
@@ -396,6 +396,8 @@ export const About: React.FC = () => {
                     id="belief-step-4"
                     className="text-lg md:text-2xl text-plk-navy font-sans font-light leading-relaxed"
                     text="Our role is not to predict markets, but to help clients make better decisions consistently especially when it matters most."
+                    prefix={<span className="text-plk-navy font-montserrat">“</span>}
+                    suffix={<span className="text-plk-navy font-montserrat">”</span>}
                   />
                 </li>
               </ul>
@@ -497,23 +499,23 @@ export const About: React.FC = () => {
               <div className="grid gap-10 md:gap-12">
                 {[
                   {
-                    title: "Risk comes before returns",
+                    title: "Risk comes before returns.",
                     desc: "Protecting capital matters more than chasing the highest possible return."
                   },
                   {
-                    title: "Asset allocation drives outcomes",
+                    title: "Asset allocation drives outcomes.",
                     desc: "Over long periods, the majority of results are driven by how assets are allocated and rebalanced—not by selecting the next best fund or stock."
                   },
                   {
-                    title: "Costs, taxes, and behaviour matter",
+                    title: "Costs, taxes, and behaviour matter.",
                     desc: "What investors keep after costs, taxes, and emotional decisions matters more than headline returns."
                   },
                   {
-                    title: "Markets move in cycles, not straight lines",
+                    title: "Markets move in cycles, not straight lines.",
                     desc: "Volatility is not a problem to be avoided, but a reality to be managed with discipline."
                   },
                   {
-                    title: "Good advice is ongoing",
+                    title: "Good advice is ongoing.",
                     desc: "Wealth management is not a one-time decision. It requires regular review, thoughtful adjustments, and steady guidance over time."
                   }
                 ].map((item, i) => (
@@ -541,8 +543,6 @@ export const About: React.FC = () => {
             id="chat-header"
             className="text-2xl md:text-2xl lg:text-4xl text-plk-navy font-montserrat font-medium italic mb-8 leading-tight block"
             text="A conversation is often the best place to begin."
-            prefix={<span className="text-plk-navy font-montserrat">“</span>}
-            suffix={<span className="text-plk-navy font-montserrat">”</span>}
             style={{ lineHeight: 1.6 }}
           />
 

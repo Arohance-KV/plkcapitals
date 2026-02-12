@@ -223,7 +223,7 @@ export const WealthManagement: React.FC = () => {
             {/* 4. Natural Next Step */}
             <section ref={section4Ref} className="w-full bg-plk-white py-32">
                 <div className="max-w-4xl mx-auto px-6 md:px-12 text-left">
-                    <div className="text-2xl font-semibold tracking-widest text-plk-navy font-montserrat font-medium uppercase mb-6">
+                    <div className="text-2xl font-semibold tracking-widest text-plk-navy/80 font-montserrat font-medium uppercase mb-6">
                         NATURAL NEXT STEP
                     </div>
                     <SplitText

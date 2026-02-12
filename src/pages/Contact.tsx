@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { useReveal, useStagger } from '../hooks/useGsap';
-import contactHero from '../assets/contact.png'; // Using placeholder relative to typical setup
 
 export const Contact: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);

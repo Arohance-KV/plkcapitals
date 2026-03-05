@@ -12,6 +12,7 @@ const useLenis = () => {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     const lenis = new Lenis({
       duration: 2.5, // Slow, heavy feel
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

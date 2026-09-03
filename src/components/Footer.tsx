@@ -70,6 +70,16 @@ export const Footer: React.FC = () => {
 
                 </div>
 
+                {/* Regulatory / Compliance Section */}
+                <div className="border-t border-white/10 pt-8 mb-8 text-gray-400 font-sans font-light leading-relaxed space-y-4 text-[13px] md:text-sm">
+                    <p>
+                        <strong className="text-plk-white font-montserrat font-medium">Registered Office:</strong> PLK Capital Advisors Private Limited, #51, Pushpa Vatika, 1st Floor, C Flat, Vanivilas Road, Basavanagudi, Bangalore – 560004, Karnataka. Tel: +91-9620050061. CIN: U66190KA2025PTC210648. Type of Registration: Non-Individual Investment Adviser. SEBI RIA No.: [Registration in progress]. SEBI RA No.: [Registration in progress]. Principal Officer: Mehul Jain. Compliance Officer: Sharada Devi. Compliance Contact: <a href="mailto:plkcapital14@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">plkcapital14@gmail.com</a>. For SEBI office details: <a href="https://www.sebi.gov.in/contact-us.html" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors font-montserrat font-medium">Complete list of SEBI offices</a>
+                    </p>
+                    <p>
+                        <strong className="text-plk-white font-montserrat font-medium">Disclaimer:</strong> Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI, enlistment with IAASB and certification from NISM in no way guarantee performance of the IA or provide any assurance of returns to investors.
+                    </p>
+                </div>
+
                 {/* Bottom Section */}
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-sans font-light">
                     <div className="mb-4 md:mb-0">

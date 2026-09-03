@@ -25,7 +25,7 @@ function App() {
 
       {!isLoading && (
         <>
-          {/* <Header />
+          <Header />
           <PageTransition>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -36,15 +36,15 @@ function App() {
               <Route path="/liquidity-management" element={<LiquidityManagement />} />
             </Routes>
           </PageTransition>
-          <Footer /> */}
-          <div className="flex-1 flex flex-col items-center justify-center pt-24 pb-12">
+          <Footer />
+          {/* <div className="flex-1 flex flex-col items-center justify-center pt-24 pb-12">
             <h1 className="text-4xl md:text-6xl text-white font-light tracking-widest text-center px-4 mb-6">
               COMING SOON
             </h1>
             <p className="text-zinc-400 text-lg md:text-xl text-center max-w-md px-4 leading-relaxed">
               We are currently working on something amazing. Stay tuned!
             </p>
-          </div>
+          </div> */}
         </>
       )}
     </div>

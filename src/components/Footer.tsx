@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
                             <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Regulatory Disclosure</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Complaint Table</a></li>
-                            <li><a href="/pdf/ICFIA.pdf" download="ICFIA.pdf" className="hover:text-white transition-colors">Investor Charter</a></li>
+                            <li><a href="/pdf/ICFIA.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Investor Charter</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">FAQs</a></li>
                         </ul>
                     </div>

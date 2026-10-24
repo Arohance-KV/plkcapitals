@@ -13,6 +13,8 @@ export const Header: React.FC = () => {
         location.pathname === '/wealth-management' ||
         location.pathname === '/liquidity-management' ||
         location.pathname === '/contact' ||
+        location.pathname === '/disclaimer' ||
+        location.pathname === '/privacy-policy' ||
         location.pathname === '/';
     const headerRef = useRef<HTMLElement>(null);
 

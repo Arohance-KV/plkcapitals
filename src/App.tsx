@@ -13,6 +13,7 @@ import { PageTransition } from './components/PageTransition';
 import { WealthManagement } from './pages/WealthManagement';
 import { LiquidityManagement } from './pages/LiquidityManagement';
 import { ScrollToTop } from './components/ScrollToTop';
+import { Disclaimer, PrivacyPolicy } from './pages/Legal';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,8 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/wealth-management" element={<WealthManagement />} />
               <Route path="/liquidity-management" element={<LiquidityManagement />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             </Routes>
           </PageTransition>
           <Footer />

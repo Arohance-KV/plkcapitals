@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 export const Footer: React.FC = () => {
@@ -15,8 +16,8 @@ export const Footer: React.FC = () => {
                         <div className="text-gray-400 text-sm font-sans font-light space-y-2 leading-relaxed">
                             <p><strong className="text-plk-white font-montserrat font-medium">Company Name:</strong> PLK CAPITAL ADVISORS PRIVATE LIMITED</p>
                             <p><strong className="text-plk-white font-montserrat font-medium">CIN:</strong> U66190KA2025PTC210648</p>
-                            <p><strong className="text-plk-white font-montserrat font-medium">SEBI RIA:</strong> -</p>
-                            <p><strong className="text-plk-white font-montserrat font-medium">SEBI RA:</strong> -</p>
+                            <p><strong className="text-plk-white font-montserrat font-medium">SEBI RIA:</strong> INA000023409</p>
+                            <p><strong className="text-plk-white font-montserrat font-medium">BSE Enlistment No.:</strong> 2593</p>
                         </div>
                     </div>
 
@@ -24,8 +25,8 @@ export const Footer: React.FC = () => {
                     <div className="md:px-4 lg:mx-auto">
                         <h4 className="text-lg mb-6 text-plk-white font-montserrat font-medium">Quick Links</h4>
                         <ul className="space-y-3 text-gray-400 font-sans font-light text-sm">
-                            <li><a href="#" className="hover:text-white transition-colors">Disclaimer</a></li>
-                            <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><Link to="/disclaimer" className="hover:text-white transition-colors">Disclaimer</Link></li>
+                            <li><Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                             <li><a href="#" className="hover:text-white transition-colors">Regulatory Disclosure</a></li>
                             <li><a href="#" className="hover:text-white transition-colors">Complaint Table</a></li>
                             <li><a href="/pdf/ICFIA.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Investor Charter</a></li>
@@ -39,11 +40,11 @@ export const Footer: React.FC = () => {
                         <div className="text-gray-400 text-sm font-sans font-light space-y-3 leading-relaxed">
                             <p>
                                 <strong className="text-plk-white font-montserrat font-medium block mb-1">Email:</strong>
-                                Plkcapital14@gmail.com
+                                Info@plkcapital.co.in
                             </p>
                             <p>
                                 <strong className="text-plk-white font-montserrat font-medium block mb-1">Number:</strong>
-                                +91-9620050061
+                                +91-9620050062
                             </p>
                             <p>
                                 <strong className="text-plk-white font-montserrat font-medium block mb-1">Address:</strong>
@@ -73,7 +74,7 @@ export const Footer: React.FC = () => {
                 {/* Regulatory / Compliance Section */}
                 <div className="border-t border-white/10 pt-8 mb-8 text-gray-400 font-sans font-light leading-relaxed space-y-4 text-[13px] md:text-sm">
                     <p>
-                        <strong className="text-plk-white font-montserrat font-medium">Registered Office:</strong> PLK Capital Advisors Private Limited, #51, Pushpa Vatika, 1st Floor, C Flat, Vanivilas Road, Basavanagudi, Bangalore – 560004, Karnataka. Tel: +91-9620050061. CIN: U66190KA2025PTC210648. Type of Registration: Non-Individual Investment Adviser. SEBI RIA No.: [Registration in progress]. SEBI RA No.: [Registration in progress]. Principal Officer: Mehul Jain. Compliance Officer: Sharada Devi. Compliance Contact: <a href="mailto:compliance@plkcapital.co.in" className="text-blue-400 hover:text-blue-300 transition-colors">compliance@plkcapital.co.in</a>. For SEBI office details: <a href="https://www.sebi.gov.in/contact-us.html" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Complete list of SEBI offices</a>
+                        <strong className="text-plk-white font-montserrat font-medium">Registered Office:</strong> PLK Capital Advisors Private Limited, #51, Pushpa Vatika, 1st Floor, C Flat, Vanivilas Road, Basavanagudi, Bangalore – 560004, Karnataka. Tel: +91-9620050062. CIN: U66190KA2025PTC210648. Type of Registration: Non-Individual Investment Adviser. SEBI RIA No.: INA000023409. BSE Enlistment No.: 2593. Principal Officer: Mehul Jain. Compliance Officer: Sharada Devi. Compliance Contact: <a href="mailto:compliance@plkcapital.co.in" className="text-blue-400 hover:text-blue-300 transition-colors">compliance@plkcapital.co.in</a>. For SEBI office details: <a href="https://www.sebi.gov.in/contact-us.html" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Complete list of SEBI offices</a>
                     </p>
                     <p>
                         <strong className="text-plk-white font-montserrat font-medium">Disclaimer:</strong> Investment in securities market are subject to market risks. Read all the related documents carefully before investing. Registration granted by SEBI, enlistment with IAASB and certification from NISM in no way guarantee performance of the IA or provide any assurance of returns to investors.
@@ -87,7 +88,7 @@ export const Footer: React.FC = () => {
                     </div>
                     <div className="flex gap-8">
                         {/* Re-using links from Center column if redundancy is needed, or keeping standard bottom links */}
-                        <a href="#" className="hover:text-white transition-colors">Privacy</a>
+                        <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
                         <a href="#" className="hover:text-white transition-colors">Security</a>
                         <a href="#" className="hover:text-white transition-colors">Terms</a>
                     </div>

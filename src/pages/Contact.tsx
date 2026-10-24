@@ -157,6 +157,20 @@ export const Contact: React.FC = () => {
                   </select>
                 </div>
 
+                {/* Referral Source */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-montserrat font-medium text-plk-navy">How did you hear about us?</label>
+                  <select className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors text-plk-navy font-light">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="google_search">Google Search</option>
+                    <option value="social_media">Social Media</option>
+                    <option value="friend_colleague">Friend or Colleague</option>
+                    <option value="news_media">News or Media</option>
+                    <option value="webinar_event">Webinar or Event</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
                 <div className="space-y-2">
                   <label className="block text-sm font-montserrat font-medium text-plk-navy">Message</label>
                   <textarea rows={5} placeholder="Anything specific you’d like us to discuss?" className="w-full px-4 py-3 border border-plk-navy/20 bg-plk-white rounded-md focus:outline-none focus:border-plk-navy focus:ring-1 focus:ring-plk-navy transition-colors placeholder:text-plk-navy/40 text-plk-navy font-light resize-none"></textarea>

@@ -301,10 +301,21 @@ export const About: React.FC = () => {
       <section ref={section1Ref} className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 mb-24 md:mb-32 px-6 md:px-12 opacity-0">
         {/* Profile Image */}
         <div className="w-full md:w-1/3 flex justify-center md:justify-start">
-          <div className="relative group max-w-[280px] md:max-w-none">
+          <a
+            href="https://www.linkedin.com/in/mehuljjain/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Mehul Jain on LinkedIn"
+            className="block relative group max-w-[280px] md:max-w-none"
+          >
             <img src={profileImg} alt="Mehul Jain" className="w-full rounded-lg shadow-sm relative z-10" />
+            <div className="absolute inset-0 z-20 rounded-lg bg-gradient-to-t from-plk-navy/90 via-plk-navy/40 to-transparent flex items-end justify-center pb-8 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-300">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 text-white" aria-hidden="true">
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+              </svg>
+            </div>
             <div className="absolute -inset-2 border border-[#0B1B2F]/5 rounded-lg -z-0 translate-x-1 translate-y-1"></div>
-          </div>
+          </a>
         </div>
 
         {/* Quote */}
